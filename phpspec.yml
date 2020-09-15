@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Novacao
+        psr4_prefix: Novacao
+        src_path: app

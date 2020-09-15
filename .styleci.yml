@@ -1,0 +1,15 @@
+preset: recommended
+disabled:
+    #  - self_accessor
+
+risky: false
+
+linting: true
+
+finder:
+  exclude:
+    - "tests"
+  name:
+    - "*.php"
+  not-name:
+    - "*Stub.php"
