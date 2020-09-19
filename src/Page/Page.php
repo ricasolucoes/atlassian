@@ -10,24 +10,38 @@ class Page
      */
     public $id;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $type;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $status;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $title;
 
-    /** @var \Atlassian\Space\Space */
+    /**
+     * @var \Atlassian\Space\Space 
+     */
     public $space;
 
-    /** @var \Atlassian\Page\History */
+    /**
+     * @var \Atlassian\Page\History 
+     */
     public $history;
 
-    /** @var \Atlassian\Page\Attachment[] */
+    /**
+     * @var \Atlassian\Page\Attachment[] 
+     */
     public $attachments;
 
-    /** @var array */
+    /**
+     * @var array 
+     */
     public $children;
 }

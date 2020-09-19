@@ -7,12 +7,18 @@ class Author
      */
     public $name;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $fullName;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $email;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $userKey;
 }

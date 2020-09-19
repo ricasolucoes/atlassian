@@ -3,18 +3,28 @@
 
 class CQLSearchResults
 {
-    /** @var \Atlassian\CQL\SearchResult[] */
+    /**
+     * @var \Atlassian\CQL\SearchResult[] 
+     */
     public $results;
 
-    /** @var int */
+    /**
+     * @var int 
+     */
     public $start = 0;
 
-    /** @var int  */
+    /**
+     * @var int  
+     */
     public $limit = 25;
 
-    /** @var int  */
+    /**
+     * @var int  
+     */
     public $size = 10;
 
-    /** @var  array|null */
+    /**
+     * @var array|null 
+     */
     public $_links;
 }

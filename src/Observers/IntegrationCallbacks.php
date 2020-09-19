@@ -78,8 +78,7 @@ class IntegrationCallbacks
             return true;
         }
 
-        if (!Schema::hasColumn($model->getTable(), 'business_code'))
-        {
+        if (!Schema::hasColumn($model->getTable(), 'business_code')) {
             return true;
         }
           

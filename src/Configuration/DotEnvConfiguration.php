@@ -41,21 +41,21 @@ class DotEnvConfiguration extends AbstractConfiguration
         }
 
         switch (strtolower($value)) {
-            case 'true':
-            case '(true)':
-                return true;
+        case 'true':
+        case '(true)':
+            return true;
 
-            case 'false':
-            case '(false)':
-                return false;
+        case 'false':
+        case '(false)':
+            return false;
 
-            case 'empty':
-            case '(empty)':
-                return '';
+        case 'empty':
+        case '(empty)':
+            return '';
 
-            case 'null':
-            case '(null)':
-                return;
+        case 'null':
+        case '(null)':
+            return;
         }
 
         if ($this->startsWith($value, '"') && endsWith($value, '"')) {

@@ -14,7 +14,7 @@ class Bitbucket
     /**
      * authenticate - log in to the bitbucket api
      *
-     * @param string $uri URI
+     * @param string $uri      URI
      * @param string $username Username
      * @param string $password Password
      *
@@ -170,7 +170,7 @@ class Bitbucket
     /**
      * addPrComment - add a comment to a pull request
      *
-     * @param string $key PR id
+     * @param string $key     PR id
      * @param string $comment Text of the comment
      *
      * @return array
@@ -335,10 +335,10 @@ class Bitbucket
 
         $data = [
         'target' => [
-#			'commit' => [
-#				'hash' => $commit,
-#				'type' => 'commit'
-#			],
+        // 'commit' => [
+        // 'hash' => $commit,
+        // 'type' => 'commit'
+        // ],
             'selector' => [
                 'type' => 'custom',
                 'pattern' => $pipeline
@@ -347,7 +347,7 @@ class Bitbucket
             'ref_type' => 'branch',
             'ref_name' => $branch
         ]
-    ];
+        ];
         $dataString = json_encode($data, JSON_PRETTY_PRINT);
         echo var_export($dataString, true) . "\n";
         $ch = $this->prepCurl($url);

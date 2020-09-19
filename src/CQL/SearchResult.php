@@ -3,15 +3,23 @@
 
 class SearchResult
 {
-    /** @var  string */
+    /**
+     * @var string 
+     */
     public $id;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $type;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $status;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $title;
 }

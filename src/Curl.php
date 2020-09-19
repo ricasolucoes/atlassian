@@ -5,6 +5,7 @@ namespace Atlassian;
 
 /**
  * Class Curl
+ *
  * @package Rainflute\ConfluenceClient
  */
 class Curl
@@ -20,6 +21,7 @@ class Curl
 
     /**
      * Class constructor
+     *
      * @param $host
      * @param $username
      * @param $password
@@ -28,10 +30,12 @@ class Curl
     {
         $this->curl = curl_init($host);
         $this->hostUrl = $host;
-        curl_setopt_array($this->curl, [
+        curl_setopt_array(
+            $this->curl, [
             CURLOPT_HTTPAUTH=>CURLAUTH_BASIC,
             CURLOPT_USERPWD=> $username . ':' . $password
-        ]);
+            ]
+        );
     }
 
     /**
@@ -47,8 +51,8 @@ class Curl
     /**
      * Set option to web client
      *
-     * @param $name
-     * @param $value
+     * @param  $name
+     * @param  $value
      * @return $this
      */
     public function setOption($name, $value)
@@ -60,7 +64,7 @@ class Curl
     /**
      * Set multiple options
      *
-     * @param array $options
+     * @param  array $options
      * @return $this
      */
     public function setOptions($options)
@@ -71,6 +75,7 @@ class Curl
 
     /**
      * Execute the quest and return response from server
+     *
      * @return mixed
      */
     public function execute()
@@ -81,7 +86,7 @@ class Curl
     /**
      * Set headers from an array to web client
      *
-     * @param $headers
+     * @param  $headers
      * @return $this
      */
     public function setHeaders($headers)
@@ -97,7 +102,7 @@ class Curl
     /**
      * Get information of the request
      *
-     * @param $name
+     * @param  $name
      * @return mixed
      */
     public function getInfo($name)

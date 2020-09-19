@@ -160,7 +160,7 @@ class Import extends Jira
     /**
      * @todo
      *
-     * @param [type] $project
+     * @param  [type] $project
      * @return void
      */
     public function project($project)
@@ -315,7 +315,8 @@ class Import extends Jira
             $vers = $proj->getVersions($projInstance->getSlug());
         
             foreach ($vers as $v) {
-                /** @todo Usar id e url
+                /**
+ * @todo Usar id e url
                  * JiraRestApi\Issue\Version^ {#5807
                  * +self: "https://sitec.atlassian.net/rest/api/2/version/10207"
                  * +id: "10207"

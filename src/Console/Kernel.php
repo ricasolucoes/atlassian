@@ -49,48 +49,48 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-    //     $schedule->command('horizon:snapshot')->everyFiveMinutes();
+        //     $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
 
-    //     $schedule->command(Commands\PhotoAtlassian\TestScheduler::class)
-    //         ->hourly();
+        //     $schedule->command(Commands\PhotoAtlassian\TestScheduler::class)
+        //         ->hourly();
 
-    //     $schedule->command(Commands\PhotoAtlassian\DeleteDetachedPhotosOlderThanWeek::class)
-    //         ->dailyAt('00:00')
-    //         ->onOneServer();
+        //     $schedule->command(Commands\PhotoAtlassian\DeleteDetachedPhotosOlderThanWeek::class)
+        //         ->dailyAt('00:00')
+        //         ->onOneServer();
 
-    //     $schedule->command(Commands\PhotoAtlassian\DeleteUnusedObjectsFromPhotoStorage::class)
-    //         ->dailyAt('00:10')
-    //         ->onOneServer();
+        //     $schedule->command(Commands\PhotoAtlassian\DeleteUnusedObjectsFromPhotoStorage::class)
+        //         ->dailyAt('00:10')
+        //         ->onOneServer();
 
-    //     $schedule->command(Commands\PhotoAtlassian\SendWeeklySubscriptionMails::class)
-    //         ->weekly()
-    //         ->sundays()
-    //         ->at('06:00')
-    //         ->onOneServer();
-
-
-    //     $schedule->command('import:photoacompanhante')
-    //         ->hourly();
+        //     $schedule->command(Commands\PhotoAtlassian\SendWeeklySubscriptionMails::class)
+        //         ->weekly()
+        //         ->sundays()
+        //         ->at('06:00')
+        //         ->onOneServer();
 
 
+        //     $schedule->command('import:photoacompanhante')
+        //         ->hourly();
 
-    //     $schedule->command(Commands\Tools\PhotoApp\TestScheduler::class)
-    //     ->hourly();
 
-    // $schedule->command(Commands\Tools\PhotoApp\DeleteDetachedPhotosOlderThanWeek::class)
-    //     ->dailyAt('00:00')
-    //     ->onOneServer();
 
-    // $schedule->command(Commands\Tools\PhotoApp\DeleteUnusedObjectsFromPhotoStorage::class)
-    //     ->dailyAt('00:10')
-    //     ->onOneServer();
+        //     $schedule->command(Commands\Tools\PhotoApp\TestScheduler::class)
+        //     ->hourly();
 
-    // $schedule->command(Commands\Tools\PhotoApp\SendWeeklySubscriptionMails::class)
-    //     ->weekly()
-    //     ->sundays()
-    //     ->at('06:00')
-    //     ->onOneServer();
+        // $schedule->command(Commands\Tools\PhotoApp\DeleteDetachedPhotosOlderThanWeek::class)
+        //     ->dailyAt('00:00')
+        //     ->onOneServer();
+
+        // $schedule->command(Commands\Tools\PhotoApp\DeleteUnusedObjectsFromPhotoStorage::class)
+        //     ->dailyAt('00:10')
+        //     ->onOneServer();
+
+        // $schedule->command(Commands\Tools\PhotoApp\SendWeeklySubscriptionMails::class)
+        //     ->weekly()
+        //     ->sundays()
+        //     ->at('06:00')
+        //     ->onOneServer();
 
     }
 

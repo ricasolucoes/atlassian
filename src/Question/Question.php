@@ -8,7 +8,9 @@ class Question
 
     public $url;
 
-    /** @var \Atlassian\Question\Author */
+    /**
+     * @var \Atlassian\Question\Author 
+     */
     public $author;
 
     public $friendlyDateAsked;
@@ -17,9 +19,13 @@ class Question
 
     public $answersCount;
 
-    /** @var \Atlassian\Question\Topic[] */
+    /**
+     * @var \Atlassian\Question\Topic[] 
+     */
     public $topics;
 
-    /** @var integer */
+    /**
+     * @var integer 
+     */
     public $acceptedAnswerId;
 }

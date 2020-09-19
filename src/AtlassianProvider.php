@@ -19,9 +19,11 @@ class AtlassianProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/../publishes/config/atlassian.php' => config_path('atlassian.php'),
-        ], 'config');
+            ], 'config'
+        );
 
         // View::composer(
         //     'kanban', 'App\Http\ViewComposers\KanbanComposer'
@@ -32,32 +34,42 @@ class AtlassianProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations/');
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/../database/migrations/' => database_path('migrations')
-        ], 'migrations');
+            ], 'migrations'
+        );
         
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'atlassian');
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/atlassian'),
-        ]);
+            ]
+        );
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'atlassian');
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/../resources/views' => resource_path('views/vendor/atlassian'),
-        ]);
+            ]
+        );
 
 
         if ($this->app->runningInConsole()) {
-            $this->commands([
+            $this->commands(
+                [
                 TokensSync::class,
-            ]);
+                ]
+            );
         }
 
         // Assets
 
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/../publishes/assets' => public_path('vendor/atlassian'),
-        ], 'public');
+            ], 'public'
+        );
     }
 
     /**
@@ -68,13 +80,15 @@ class AtlassianProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../publishes/config/atlassian.php', 'atlassian'
         );
-        $this->app->singleton(AdminLte::class, function (Container $app) {
-            return new AdminLte(
-                $app['config']['adminlte.filters'],
-                $app['events'],
-                $app
-            );
-        });
+        $this->app->singleton(
+            AdminLte::class, function (Container $app) {
+                return new AdminLte(
+                    $app['config']['adminlte.filters'],
+                    $app['events'],
+                    $app
+                );
+            }
+        );
     }
     
     /**

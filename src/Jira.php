@@ -14,7 +14,7 @@ class Jira
     /**
      * authenticate - log in to the jira api
      *
-     * @param string $uri URI
+     * @param string $uri      URI
      * @param string $username Username
      * @param string $password Password
      *
@@ -135,7 +135,7 @@ class Jira
     /**
      * getIssue - retrieve an issue
      *
-     * @param string $key Issue key
+     * @param string $key    Issue key
      * @param string $fields Fields
      *
      * @return array
@@ -181,8 +181,8 @@ class Jira
     /**
      * updateIssue - update an issue
      *
-     * @param string $key Issue key
-     * @param array $data Data for fields
+     * @param string $key  Issue key
+     * @param array  $data Data for fields
      *
      * @return array|boolean
      */
@@ -277,7 +277,7 @@ class Jira
     /**
      * transitionTo - transition an issue to a new status
      *
-     * @param string $key Issue key
+     * @param string $key    Issue key
      * @param string $status Transition to status
      *
      * @return bool
@@ -315,7 +315,7 @@ class Jira
     /**
      * addComment - add a comment to an issue
      *
-     * @param string $key Issue key
+     * @param string $key     Issue key
      * @param string $comment Text of the comment
      *
      * @return array

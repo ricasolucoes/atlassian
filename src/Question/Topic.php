@@ -3,18 +3,28 @@
 
 class Topic
 {
-    /** @var  integer */
+    /**
+     * @var integer 
+     */
     public $id;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $idAsString;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $url;
 
-    /** @var boolean */
+    /**
+     * @var boolean 
+     */
     public $featured;
 
-    /** @var boolean */
+    /**
+     * @var boolean 
+     */
     public $isWatching;
 }

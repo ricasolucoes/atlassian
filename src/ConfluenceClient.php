@@ -84,10 +84,12 @@ class ConfluenceClient
             $this->log = $logger;
         } else {
             $this->log = new Logger('Confluence');
-            $this->log->pushHandler(new StreamHandler(
-                $configuration->getLogFile(),
-                $this->convertLogLevel($configuration->getLogLevel())
-            ));
+            $this->log->pushHandler(
+                new StreamHandler(
+                    $configuration->getLogFile(),
+                    $this->convertLogLevel($configuration->getLogLevel())
+                )
+            );
         }
 
         $this->http_response = 200;
@@ -103,14 +105,14 @@ class ConfluenceClient
     private function convertLogLevel($log_level)
     {
         switch ($log_level) {
-            case 'DEBUG':
-                return Logger::DEBUG;
-            case 'INFO':
-                return Logger::INFO;
-            case 'ERROR':
-                return Logger::ERROR;
-            default:
-                return Logger::WARNING;
+        case 'DEBUG':
+            return Logger::DEBUG;
+        case 'INFO':
+            return Logger::INFO;
+        case 'ERROR':
+            return Logger::ERROR;
+        default:
+            return Logger::WARNING;
         }
     }
 
@@ -149,20 +151,26 @@ class ConfluenceClient
      */
     public function get($uri)
     {
-        $client = new \GuzzleHttp\Client([
+        $client = new \GuzzleHttp\Client(
+            [
             'base_uri' => $this->gitHost,
             'timeout' => 10.0,
             'verify' => false,
-        ]);
-        $response = $client->get($this->gitHost.$this->api_uri.$uri, [
+            ]
+        );
+        $response = $client->get(
+            $this->gitHost.$this->api_uri.$uri, [
             'query' => [
                 'private_token' => $this->gitToken,
                 'per_page' => 10000,
             ],
-        ]);
+            ]
+        );
         if ($response->getStatusCode() != 200) {
-            throw GitlabException('Http request failed. status code : '
-                .$response->getStatusCode().' reason:'.$response->getReasonPhrase());
+            throw GitlabException(
+                'Http request failed. status code : '
+                .$response->getStatusCode().' reason:'.$response->getReasonPhrase()
+            );
         }
 
         return json_decode($response->getBody());
@@ -207,13 +215,15 @@ class ConfluenceClient
         $this->authorization($ch);
 
         if (!$this->getConfiguration()->isSslVerify()) {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         }
 
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER,
-            array('Accept: */*', 'Content-Type: application/json'));
+        curl_setopt(
+            $ch, CURLOPT_HTTPHEADER,
+            array('Accept: */*', 'Content-Type: application/json')
+        );
 
         curl_setopt($ch, CURLOPT_VERBOSE, $this->getConfiguration()->isVerbose());
 
@@ -242,9 +252,11 @@ class ConfluenceClient
 
             // don't check 301, 302 because setting CURLOPT_FOLLOWLOCATION
             if ($this->http_response != 200 && $this->http_response != 201) {
-                throw new ConfluenceException('CURL HTTP Request Failed: Status Code : '
-                 .$this->http_response.', URL:'.$url
-                 ."\nError Message : ".$response, $this->http_response);
+                throw new ConfluenceException(
+                    'CURL HTTP Request Failed: Status Code : '
+                    .$this->http_response.', URL:'.$url
+                    ."\nError Message : ".$response, $this->http_response
+                );
             }
         }
 
@@ -272,8 +284,10 @@ class ConfluenceClient
             $attachments = realpath($upload_file);
             $filename = basename($upload_file);
 
-            curl_setopt($ch, CURLOPT_POSTFIELDS,
-                array('file' => '@'.$attachments.';filename='.$filename));
+            curl_setopt(
+                $ch, CURLOPT_POSTFIELDS,
+                array('file' => '@'.$attachments.';filename='.$filename)
+            );
 
             $this->log->addDebug('using legacy file upload');
         } else {
@@ -281,8 +295,10 @@ class ConfluenceClient
             $attachments = new \CURLFile(realpath($upload_file));
             $attachments->setPostFilename(basename($upload_file));
 
-            curl_setopt($ch, CURLOPT_POSTFIELDS,
-                    array('file' => $attachments));
+            curl_setopt(
+                $ch, CURLOPT_POSTFIELDS,
+                array('file' => $attachments)
+            );
 
             $this->log->addDebug('using CURLFile='.var_export($attachments, true));
         }
@@ -293,12 +309,14 @@ class ConfluenceClient
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $this->getConfiguration()->isCurlOptSslVerifyPeer());
 
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER,
+        curl_setopt(
+            $ch, CURLOPT_HTTPHEADER,
             array(
                 'Accept: */*',
                 'Content-Type: multipart/form-data',
                 'X-Atlassian-Token: nocheck',
-                ));
+            )
+        );
 
         curl_setopt($ch, CURLOPT_VERBOSE, $this->getConfiguration()->isCurlOptVerbose());
 
@@ -380,7 +398,7 @@ class ConfluenceClient
         }
 
         // clean up
-end:
+        end:
         foreach ($chArr as $ch) {
             $this->log->addDebug('CURL Close handle..');
             curl_close($ch);
@@ -405,7 +423,7 @@ end:
      */
     protected function createUrlByContext($context, $isFqdn = false)
     {
-        if ($isFqdn == true){
+        if ($isFqdn == true) {
             return $context;
         }
 

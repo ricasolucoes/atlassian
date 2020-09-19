@@ -14,6 +14,7 @@ class Client
 
     /**
      * Class constructor
+     *
      * @param Curl $curl
      */
     public function __construct(Curl $curl)
@@ -24,7 +25,7 @@ class Client
     /**
      * Create new page
      *
-     * @param ConfluencePage $page
+     * @param  ConfluencePage $page
      * @return mixed
      * @throws \Exception
      */
@@ -48,14 +49,14 @@ class Client
             ],
         ];
 
-        return $this->request('GET',$this->curl->getHost()."/content",$data);
+        return $this->request('GET', $this->curl->getHost()."/content", $data);
     }
 
 
     /**
      * Update an existing page
      *
-     * @param ConfluencePage $page
+     * @param  ConfluencePage $page
      * @return mixed
      * @throws \Exception
      */
@@ -75,57 +76,62 @@ class Client
             "version"=>["number"=>$page->getVersion()]
         ];
 
-        return $this->request('POST',$this->curl->getHost()."/content/{$page->getId()}",$data);
+        return $this->request('POST', $this->curl->getHost()."/content/{$page->getId()}", $data);
     }
 
     /**
      * Delete a page
      *
-     * @param $id
+     * @param  $id
      * @return null
      * @throws \Exception
      */
     public function deletePage($id)
     {
-        return $this->request('DELETE',$this->curl->getHost()."/content/$id");
+        return $this->request('DELETE', $this->curl->getHost()."/content/$id");
     }
 
     /**
      * Search page by title, space key, type or id
-     * @param $parameters
+     *
+     * @param  $parameters
      * @return int
      * @throws \Exception
      */
-    public function selectPageBy($parameters){
-        if(!is_array($parameters)) throw new \Exception('Invalid argument');
+    public function selectPageBy($parameters)
+    {
+        if(!is_array($parameters)) { throw new \Exception('Invalid argument');
+        }
         $url = $this->curl->getHost()."/content?";
-        if(isset($parameters['title'])){
+        if(isset($parameters['title'])) {
             $url = $url."title={$parameters['title']}&";
         }
-        if(isset($parameters['spaceKey'])){
+        if(isset($parameters['spaceKey'])) {
             $url = $url."spaceKey={$parameters['spaceKey']}&";
         }
-        if(isset($parameters['type'])){
+        if(isset($parameters['type'])) {
             $url = $url."type={$parameters['type']}&";
         }
-        if(isset($parameters['id'])){
+        if(isset($parameters['id'])) {
             $url = $this->curl->getHost()."/content/".$parameters['id']."?";
         }
-        if(isset($parameters['expand'])){
+        if(isset($parameters['expand'])) {
             $url = $url."expand=".$parameters['expand'];
         }
 
-        return $this->request('GET',$url);
+        return $this->request('GET', $url);
     }
 
     /**
      * Upload an attachment
-     * @param $path
-     * @param $parentPageId
+     *
+     * @param  $path
+     * @param  $parentPageId
      * @return string
      * @throws \Exception
      */
-    public function uploadAttachment($path,$parentPageId){
+    public function uploadAttachment($path,$parentPageId)
+    {
         $headers = [
             'Content-Type' => 'multipart/form-data',
             'X-Atlassian-Token' => 'no-check'
@@ -144,23 +150,24 @@ class Client
     /**
      * Get attachments from the page
      *
-     * @param $pageId
+     * @param  $pageId
      * @return string
      * @throws \Exception
      */
     public function selectAttachments($pageId)
     {
-        return $this->request('GET',$this->curl->getHost()."/content/$pageId/child/attachment");
+        return $this->request('GET', $this->curl->getHost()."/content/$pageId/child/attachment");
     }
 
     /**
-     * @param string $pageId
-     * @param array $labels [['name'=>'example_tag'],...]
+     * @param  string $pageId
+     * @param  array  $labels [['name'=>'example_tag'],...]
      * @return string
      * @throws \Exception
      */
-    public function addLabel($pageId,$labels){
-        return $this->request('POST',$this->curl->getHost()."/content/$pageId/label",$labels);
+    public function addLabel($pageId,$labels)
+    {
+        return $this->request('POST', $this->curl->getHost()."/content/$pageId/label", $labels);
     }
 
     /**
@@ -168,7 +175,7 @@ class Client
      *
      * @param $method
      * @param $url
-     * @param array  $data
+     * @param array $data
      * @param array $headers
      *
      * @return int
@@ -183,13 +190,15 @@ class Client
         if (!in_array($method, $methods)) {
             throw new \Exception('Invalid method');
         }
-        $this->curl->setOptions([
+        $this->curl->setOptions(
+            [
             CURLOPT_URL=>$url,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_CUSTOMREQUEST => strtoupper($method),
-        ])->setHeaders($headers);
+            ]
+        )->setHeaders($headers);
 
-        if($data !== []){
+        if($data !== []) {
             $this->curl->setOption(CURLOPT_POSTFIELDS, $data);
         }
 

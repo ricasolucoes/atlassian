@@ -23,20 +23,19 @@ class QuestionService extends ConfluenceClient
                     'filter' => 'recent',
                     ];
 
-   private $accceptedAnswerId = null;
+    private $accceptedAnswerId = null;
 
     /**
      * get question list
      *
-     * @param null $paramArray
+     * @param  null $paramArray
      * @return mixed
      * @throws \Atlassian\ConfluenceException
      */
     public function getQuestion($paramArray = null)
     {
         // set default param
-        if (empty($paramArray))
-        {
+        if (empty($paramArray)) {
             $paramArray = $this->defaultParam;
         }
 
@@ -61,8 +60,7 @@ class QuestionService extends ConfluenceClient
         // clear old value
         $this->accceptedAnswerId = null;
 
-        if (empty($questionId))
-        {
+        if (empty($questionId)) {
             throw new ConfluenceException('Question id must be not null.! ');
         }
 
@@ -80,15 +78,14 @@ class QuestionService extends ConfluenceClient
     /**
      * Get a accepted answer
      *
-     * @param $questionId
+     * @param  $questionId
      * @return Answer|null
      */
     public function getAcceptedAnswer($questionId)
     {
         $question = $this->getQuestionDetail($questionId);
 
-        if (empty($question) || empty($question->acceptedAnswerId))
-        {
+        if (empty($question) || empty($question->acceptedAnswerId)) {
             return null;
         }
 
@@ -100,13 +97,14 @@ class QuestionService extends ConfluenceClient
     /**
      * determine question has accepted answer
      *
-     * @param null $questionId
+     * @param  null $questionId
      * @return bool|null
      */
     public function hasAcceptedAnswer($questionId = null)
     {
-        if ($questionId === null)
+        if ($questionId === null) {
             return !is_null($this->accceptedAnswerId) ? true : false;
+        }
 
         $as = $this->getAcceptedAnswer($questionId);
 

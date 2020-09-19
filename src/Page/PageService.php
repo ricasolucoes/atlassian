@@ -9,7 +9,7 @@ class PageService extends ConfluenceClient
     public $uri = '/api/content';
 
     /**
-     * @param $pageOrAttachmentId
+     * @param  $pageOrAttachmentId
      * @return \Atlassian\Page\Page
      * @throws \JsonMapper_Exception
      * @throws \Atlassian\ConfluenceException
@@ -74,7 +74,7 @@ class PageService extends ConfluenceClient
     /**
      * get current page's attachements list
      *
-     * @param $pageId
+     * @param  $pageId
      * @return Page
      * @throws \Atlassian\ConfluenceException
      */
@@ -107,8 +107,8 @@ class PageService extends ConfluenceClient
     /**
      * download all attachment in the current page
      *
-     * @param $pageId
-     * @param $destination output directory
+     * @param  $pageId
+     * @param  $destination output directory
      * @return Page
      * @throws \Atlassian\ConfluenceException
      */

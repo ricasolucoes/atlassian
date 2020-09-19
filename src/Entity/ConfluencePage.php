@@ -55,7 +55,7 @@ class ConfluencePage
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return ConfluencePage
      */
     public function setType($type)
@@ -73,7 +73,7 @@ class ConfluencePage
     }
 
     /**
-     * @param mixed $id
+     * @param  mixed $id
      * @return ConfluencePage
      */
     public function setId($id)
@@ -91,7 +91,7 @@ class ConfluencePage
     }
 
     /**
-     * @param mixed $title
+     * @param  mixed $title
      * @return ConfluencePage
      */
     public function setTitle($title)
@@ -109,7 +109,7 @@ class ConfluencePage
     }
 
     /**
-     * @param mixed $space
+     * @param  mixed $space
      * @return ConfluencePage
      */
     public function setSpace($space)
@@ -127,7 +127,7 @@ class ConfluencePage
     }
 
     /**
-     * @param mixed $ancestors
+     * @param  mixed $ancestors
      * @return ConfluencePage
      */
     public function setAncestors($ancestors)
@@ -145,7 +145,7 @@ class ConfluencePage
     }
 
     /**
-     * @param mixed $content
+     * @param  mixed $content
      * @return ConfluencePage
      */
     public function setContent($content)
@@ -163,7 +163,7 @@ class ConfluencePage
     }
 
     /**
-     * @param int $version
+     * @param  int $version
      * @return ConfluencePage
      */
     public function setVersion($version)
@@ -181,7 +181,7 @@ class ConfluencePage
     }
 
     /**
-     * @param mixed $children
+     * @param  mixed $children
      * @return ConfluencePage
      */
     public function setChildren($children)
@@ -199,7 +199,7 @@ class ConfluencePage
     }
 
     /**
-     * @param string $url
+     * @param  string $url
      * @return ConfluencePage
      */
     public function setUrl($url)
@@ -217,7 +217,7 @@ class ConfluencePage
     }
 
     /**
-     * @param mixed $createdDate
+     * @param  mixed $createdDate
      * @return ConfluencePage
      */
     public function setCreatedDate($createdDate)

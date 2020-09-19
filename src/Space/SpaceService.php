@@ -26,16 +26,15 @@ class SpaceService extends ConfluenceClient
     /**
      * get question list
      *
-     * @param spaceKeyArray a list of space keys
-     * @param paramArray parameter array
+     * @param  spaceKeyArray a list of space keys
+     * @param  paramArray parameter array
      * @return mixed
      * @throws \Atlassian\ConfluenceException
      */
     public function getSpace($spaceKeysParam, $paramArray = null)
     {
         // set default param
-        if (empty($paramArray))
-        {
+        if (empty($paramArray)) {
             $paramArray = $this->defaultParam;
         }
 

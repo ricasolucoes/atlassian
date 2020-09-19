@@ -2,13 +2,19 @@
 
 class Answer
 {
-    /** @var integer */
+    /**
+     * @var integer 
+     */
     public $id;
 
-    /** @var integer */
+    /**
+     * @var integer 
+     */
     public $questionId;
 
-    /** @var \Atlassian\Question\Author */
+    /**
+     * @var \Atlassian\Question\Author 
+     */
     public $author;
 
     public $dateAnswered;
@@ -21,13 +27,17 @@ class Answer
 
     public $metadata;
 
-    /** @var boolean */
+    /**
+     * @var boolean 
+     */
     public $accepted;
 
     public $url;
 
     public $idAsString;
 
-    /** @var null|\Atlassian\Question\Question only accepted answer has question class */
+    /**
+     * @var null|\Atlassian\Question\Question only accepted answer has question class 
+     */
     public $question;
 }

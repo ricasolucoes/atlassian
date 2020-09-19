@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 trait MakesHttpRequests
 {
     /**
-     * @param  string $uri
+     * @param string $uri
      *
      * @return mixed
      */
@@ -21,8 +21,8 @@ trait MakesHttpRequests
     }
 
     /**
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
      *
      * @return mixed
      */
@@ -32,8 +32,8 @@ trait MakesHttpRequests
     }
 
     /**
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
      *
      * @return mixed
      */
@@ -43,8 +43,8 @@ trait MakesHttpRequests
     }
 
     /**
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
      *
      * @return mixed
      */
@@ -54,15 +54,16 @@ trait MakesHttpRequests
     }
 
     /**
-     * @param  string $verb
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $verb
+     * @param string $uri
+     * @param array  $payload
      *
      * @return mixed
      */
     protected function request(string $verb, string $uri, array $payload = [])
     {
-        $response = $this->client->request($verb, $uri,
+        $response = $this->client->request(
+            $verb, $uri,
             empty($payload) ? [] : ['form_params' => $payload]
         );
 

@@ -9,42 +9,43 @@ namespace Atlassian\Jira;
 /**
  * A base class to extract data from Jira database.
  */
-interface FilteredExtractInterface extends Extractnterface {
+interface FilteredExtractInterface extends Extractnterface
+{
 
-  public function addFilterProjects($projects);
+    public function addFilterProjects($projects);
 
-  public function addFilterBugWontFix();
+    public function addFilterBugWontFix();
 
-  public function addFilterDefects();
+    public function addFilterDefects();
 
-  public function addFilterIgnoreDuplicates();
+    public function addFilterIgnoreDuplicates();
 
-  public function addFilterOpen();
+    public function addFilterOpen();
 
-  public function addFilterPriority();
+    public function addFilterPriority();
 
-  public function addFilterCritical();
+    public function addFilterCritical();
 
-  public function addFilterUrgent();
+    public function addFilterUrgent();
 
-  public function addFilterHigh();
+    public function addFilterHigh();
 
-  public function addFilterTBD();
+    public function addFilterTBD();
 
-  public function addFilterCannotReproduce();
+    public function addFilterCannotReproduce();
 
-  public function addFilterDuplicate();
+    public function addFilterDuplicate();
 
-  public function addFilterMoreInfoNeeded();
+    public function addFilterMoreInfoNeeded();
 
-  public function addFilterNBWF();
+    public function addFilterNBWF();
 
-  public function addFilterClosed();
+    public function addFilterClosed();
 
-  public function addTimeFrame($field);
+    public function addTimeFrame($field);
 
-  public function addFilterEscaped();
+    public function addFilterEscaped();
 
-  public function addFilterRegression();
+    public function addFilterRegression();
 
 }

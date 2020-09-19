@@ -19,7 +19,7 @@ interface PageInterface
 {
     public static function init($space_key, $title);
 
-    public static function getQuery() ;
+    public static function getQuery();
 
     public static function getConfluence();
 

@@ -10,7 +10,7 @@ use Atlassian\Question\QuestionService;
  * Confluence Questions REST Service class
  *
  * @package Atlassian\Answer
- * @see https://docs.atlassian.com/confluence-questions/rest/resource_AnswerResource.html
+ * @see     https://docs.atlassian.com/confluence-questions/rest/resource_AnswerResource.html
  */
 class AnswerService extends ConfluenceClient
 {
@@ -25,21 +25,19 @@ class AnswerService extends ConfluenceClient
     /**
      * get answer list
      *
-     * @param string $username the user who made the answers
-     * @param array|null $paramArray
+     * @param  string     $username   the user who made the answers
+     * @param  array|null $paramArray
      * @return mixed
      * @throws \Atlassian\ConfluenceException
      */
     public function getAnswers($username, $paramArray = null)
     {
-        if (empty($username))
-        {
+        if (empty($username)) {
             throw new ConfluenceException('username must be set.! ');
         }
 
         // set default param
-        if (empty($paramArray))
-        {
+        if (empty($paramArray)) {
             $paramArray = $this->defaultParam;
         }
         $paramArray['username'] = $username;
@@ -62,8 +60,7 @@ class AnswerService extends ConfluenceClient
      */
     public function getAnswerDetail($answerId)
     {
-        if (empty($answerId))
-        {
+        if (empty($answerId)) {
             throw new ConfluenceException('Answer id must be not null.! ');
         }
 
@@ -77,7 +74,7 @@ class AnswerService extends ConfluenceClient
     /**
      * getting related answer
      *
-     * @param $answerId
+     * @param  $answerId
      * @return Question|null
      * @throws ConfluenceException
      * @throws \JsonMapper_Exception

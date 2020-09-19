@@ -5,15 +5,23 @@ namespace Atlassian\Page;
 
 class History
 {
-    /** @var  boolean */
+    /**
+     * @var boolean 
+     */
     public $latest;
 
-    /** @var  array */
+    /**
+     * @var array 
+     */
     public $createdBy;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $createdDate;
 
-    /** @var  array */
+    /**
+     * @var array 
+     */
     public $_links;
 }
