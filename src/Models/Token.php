@@ -5,7 +5,7 @@
 
 namespace Atlassian\Models;
 
-use Support\Models\Base;
+use Pedreiro\Models\Base;
 use Telefonica\Models\Digital\Account;
 
 class Token extends Base

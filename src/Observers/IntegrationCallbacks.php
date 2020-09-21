@@ -5,7 +5,7 @@ namespace Atlassian\Observers;
 use Event;
 use Log;
 use Illuminate\Support\Str;
-use Support\Models\Base;
+use Pedreiro\Models\Base;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Throwable;
 use Illuminate\Support\Facades\Schema;
