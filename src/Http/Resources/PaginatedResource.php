@@ -1,13 +1,13 @@
 <?php
 
-namespace Atlassian\Http\Resources\Entitys;
+namespace Atlassian\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
  * Class PaginatedResource.
  *
- * @package Atlassian\Http\Resources\Entitys
+ * @package Atlassian\Http\Resources
  */
 class PaginatedResource extends ResourceCollection
 {

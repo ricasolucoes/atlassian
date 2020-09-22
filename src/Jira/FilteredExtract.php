@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Contains the FilterdExtract class.
+ * Contains the FilteredExtract class.
  */
 
 namespace Atlassian\Jira;
@@ -12,7 +12,7 @@ use Atlassian\RestApiClient\JiraClient;
 /**
  * A base class to extract data from Jira database.
  */
-class FilterdExtract extends Extract implements FilteredExtractInterface
+class FilteredExtract extends Extract implements FilteredExtractInterface
 {
     /**
      * FilteredExtract constructor.
@@ -169,5 +169,4 @@ class FilterdExtract extends Extract implements FilteredExtractInterface
         $query['jql'] .= 'Regression = Yes';
         $this->setQuery($query);
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Atlassian\Resources;
+namespace Atlassian\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
