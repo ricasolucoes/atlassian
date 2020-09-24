@@ -52,10 +52,11 @@ class QuestionService extends ConfluenceClient
      * Get a question by its ID
      *
      * @param $questionId question id
+     * @param int|null $questionId
      *
      * @return Question|null
      */
-    public function getQuestionDetail($questionId)
+    public function getQuestionDetail(?int $questionId)
     {
         // clear old value
         $this->accceptedAnswerId = null;

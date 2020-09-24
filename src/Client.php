@@ -182,7 +182,7 @@ class Client
      *
      * @throws \Exception
      */
-    public function request($method, $url, $data = [], $headers = ['Content-Type' => 'application/json'])
+    public function request(string $method, string $url, $data = [], $headers = ['Content-Type' => 'application/json'])
     {
         //Detect invalid method
         $method = strtolower($method);

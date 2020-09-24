@@ -31,7 +31,7 @@ class Config
      */
     static protected $app;
 
-    static function init($app = '', $settings_file_name = 'settings.php', $connection = 'default')
+    static function init(string $app = '', $settings_file_name = 'settings.php', $connection = 'default')
     {
         self::setApp($app);
         self::setSettings($settings_file_name);

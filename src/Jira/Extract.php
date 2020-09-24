@@ -46,7 +46,10 @@ class Extract extends Base implements ExtractInterface
         $this->buildQuery();
     }
 
-    protected function setQuery($query)
+    /**
+     * @param (int|string)[] $query
+     */
+    protected function setQuery(array $query)
     {
         $this->query = $query;
     }

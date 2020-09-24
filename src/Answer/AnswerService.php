@@ -58,7 +58,7 @@ class AnswerService extends ConfluenceClient
      *
      * @return Answer|null
      */
-    public function getAnswerDetail($answerId)
+    public function getAnswerDetail(int $answerId)
     {
         if (empty($answerId)) {
             throw new ConfluenceException('Answer id must be not null.! ');

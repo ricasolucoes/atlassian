@@ -102,7 +102,7 @@ class ConfluenceClient
      *
      * @return int
      */
-    private function convertLogLevel($log_level)
+    private function convertLogLevel(string $log_level)
     {
         switch ($log_level) {
         case 'DEBUG':
@@ -187,7 +187,7 @@ class ConfluenceClient
      *
      * @throws ConfluenceException
      */
-    public function exec($context, $post_data = null, $custom_request = null, $isFqdn = false)
+    public function exec($context, $post_data = null, $custom_request = null, bool $isFqdn = false)
     {
         $url = $this->createUrlByContext($context, $isFqdn);
 

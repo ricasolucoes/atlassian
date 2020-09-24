@@ -61,7 +61,7 @@ class Client implements ClientInterface
     /**
      * {@inheritdoc}
      */
-    public function createUrl($path, array $query = array())
+    public function createUrl(string $path, array $query = array())
     {
         Config::init($this->appID);
         $host = Config::getHost();
@@ -113,6 +113,9 @@ class Client implements ClientInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param bool|string $response
+     * @param false|resource $curl
      */
     public function getResult($response, $curl, $url)
     {

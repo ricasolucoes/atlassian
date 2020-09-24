@@ -55,7 +55,7 @@ class Curl
      * @param  $value
      * @return $this
      */
-    public function setOption($name, $value)
+    public function setOption(int $name, array $value)
     {
         curl_setopt($this->curl, $name, $value);
         return $this;
@@ -89,7 +89,7 @@ class Curl
      * @param  $headers
      * @return $this
      */
-    public function setHeaders($headers)
+    public function setHeaders(array $headers)
     {
         $httpHeaders = [];
         foreach ($headers as $key => $value) {
