@@ -7,10 +7,21 @@ namespace Atlassian;
  */
 class Jira
 {
+    /**
+     * @var string
+     */
     protected $uri;
+
+    /**
+     * @var string
+     */
     protected $username;
+
+    /**
+     * @var string
+     */
     protected $password;
-    protected $encodedCredential;
+    protected string $encodedCredential;
     /**
      * authenticate - log in to the jira api
      *
@@ -18,9 +29,9 @@ class Jira
      * @param string $username Username
      * @param string $password Password
      *
-     * @return bool
+     * @return void
      */
-    public function authenticate($uri, $username, $password)
+    public function authenticate($uri, $username, $password): void
     {
         $this->uri = $uri;
         $this->username = $username;
@@ -82,7 +93,6 @@ class Jira
 
             $responseString = curl_exec($ch);
 
-            $curlInfo = curl_getinfo($ch);
 
             return json_decode($responseString, true);
         }
@@ -103,7 +113,6 @@ class Jira
 
             $responseString = curl_exec($ch);
 
-            $curlInfo = curl_getinfo($ch);
 
             return json_decode($responseString, true);
         }
@@ -126,7 +135,6 @@ class Jira
 
             $responseString = curl_exec($ch);
 
-            $curlInfo = curl_getinfo($ch);
 
             return json_decode($responseString, true);
         }
@@ -151,7 +159,6 @@ class Jira
 
             $responseString = curl_exec($ch);
 
-            $curlInfo = curl_getinfo($ch);
 
             return json_decode($responseString, true);
         }
@@ -172,7 +179,6 @@ class Jira
 
             $responseString = curl_exec($ch);
 
-            $curlInfo = curl_getinfo($ch);
 
             return json_decode($responseString, true);
         }
@@ -184,7 +190,7 @@ class Jira
      * @param string $key  Issue key
      * @param array  $data Data for fields
      *
-     * @return array|boolean
+     * @return bool|string
      */
     public function updateIssue($key, $data)
     {
@@ -220,7 +226,7 @@ class Jira
      *
      * @param array $data Data for fields
      *
-     * @return array|boolean
+     * @return bool|string
      */
     public function createIssue($data)
     {
@@ -256,9 +262,11 @@ class Jira
      *
      * @param string $key Issue key
      *
-     * @return array
+     * @return string[]
+     *
+     * @psalm-return array<array-key, string>
      */
-    public function getTransitions($key)
+    public function getTransitions($key): array
     {
         $url = $this->uri . "/rest/api/latest/issue/" . $key . '/transitions';
         $ch = $this->prepCurl($url);
@@ -306,7 +314,7 @@ class Jira
             curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-            $response = curl_exec($ch);
+            curl_exec($ch);
             return true;
         }
         return false;
@@ -318,7 +326,7 @@ class Jira
      * @param string $key     Issue key
      * @param string $comment Text of the comment
      *
-     * @return array
+     * @return bool|string
      */
     public function addComment($key, $comment)
     {
@@ -361,7 +369,6 @@ class Jira
 
             $responseString = curl_exec($ch);
 
-            $curlInfo = curl_getinfo($ch);
 
             return json_decode($responseString, true);
         }

@@ -44,6 +44,11 @@ class Base implements BaseInterface
     }
 
 
+    /**
+     * @return array
+     *
+     * @psalm-return array<string, mixed>
+     */
     public function getProperties()
     {
         $result = get_object_vars($this);
@@ -51,6 +56,9 @@ class Base implements BaseInterface
         return $result;
     }
 
+    /**
+     * @return string
+     */
     public function getClassName()
     {
         return get_class($this);
@@ -66,6 +74,8 @@ class Base implements BaseInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function setProjectID($project_id)
     {
@@ -82,6 +92,8 @@ class Base implements BaseInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param \DateTime $start_date
      */
     public function setStartDate(\DateTime $start_date)
     {
@@ -100,6 +112,8 @@ class Base implements BaseInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param \DateTime $end_date
      */
     public function setEndDate(\DateTime $end_date)
     {

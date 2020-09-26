@@ -8,20 +8,103 @@ namespace Atlassian\Filter;
 
 class Filter
 {
-    private $bugWontFix;
-    private $cannotReproduce;
-    private $closed;
-    private $critical;
-    private $defects;
-    private $duplicate;
-    private $high;
-    private $moreInfoNeeded;
-    private $notBugWontFix;
-    private $open;
-    private $priority;
-    private $toBeDetermined;
-    private $urgent;
-    protected $filters;
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{resolution: array{0: string}}
+     */
+    private array $bugWontFix;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{resolution: array{0: string}}
+     */
+    private array $cannotReproduce;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{status: array{0: string, 1: string, 2: string}}
+     */
+    private array $closed;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{priority: array{0: string}}
+     */
+    private array $critical;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{issuetype: array{0: string, 1: string, 2: string}}
+     */
+    private array $defects;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{resolution: array{0: string}}
+     */
+    private array $duplicate;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{priority: array{0: string}}
+     */
+    private array $high;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{resolution: array{0: string}}
+     */
+    private array $moreInfoNeeded;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{resolution: array{0: string}}
+     */
+    private array $notBugWontFix;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{status: array{0: string, 1: string, 2: string, 3: string, 4: string, 5: string, 6: string, 7: string, 8: string, 9: string, 10: string, 11: string}}
+     */
+    private array $open;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{priority: array{0: string, 1: string, 2: string}}
+     */
+    private array $priority;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{priority: array{0: string}}
+     */
+    private array $toBeDetermined;
+
+    /**
+     * @var string[][]
+     *
+     * @psalm-var array{priority: array{0: string}}
+     */
+    private array $urgent;
+
+    /**
+     * @var string[][][]
+     *
+     * @psalm-var array{bwf: array{resolution: array{0: string}}, cannot_reproduce: array{resolution: array{0: string}}, closed: array{status: array{0: string, 1: string, 2: string}}, critical: array{priority: array{0: string}}, defects: array{issuetype: array{0: string, 1: string, 2: string}}, duplicate: array{resolution: array{0: string}}, high: array{priority: array{0: string}}, min: array{resolution: array{0: string}}, nbwf: array{resolution: array{0: string}}, open: array{status: array{0: string, 1: string, 2: string, 3: string, 4: string, 5: string, 6: string, 7: string, 8: string, 9: string, 10: string, 11: string}}, priority: array{priority: array{0: string, 1: string, 2: string}}, urgent: array{priority: array{0: string}}, tbd: array{priority: array{0: string}}}
+     */
+    protected array $filters;
 
     public function __construct()
     {

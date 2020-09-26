@@ -50,13 +50,6 @@ interface ConfigurationInterface
     public function isSslVerify();
 
     /**
-     * connection timeout
-     *
-     * @return integer
-     */
-    public function isTimeout();
-
-    /**
      *
      * @return bool
      */

@@ -20,25 +20,6 @@ class Curl
     private $hostUrl;
 
     /**
-     * Class constructor
-     *
-     * @param $host
-     * @param $username
-     * @param $password
-     */
-    public function __construct($host, $username, $password)
-    {
-        $this->curl = curl_init($host);
-        $this->hostUrl = $host;
-        curl_setopt_array(
-            $this->curl, [
-            CURLOPT_HTTPAUTH=>CURLAUTH_BASIC,
-            CURLOPT_USERPWD=> $username . ':' . $password
-            ]
-        );
-    }
-
-    /**
      * Get host url
      *
      * @return string
@@ -97,17 +78,6 @@ class Curl
         }
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, $httpHeaders);
         return $this;
-    }
-
-    /**
-     * Get information of the request
-     *
-     * @param  $name
-     * @return mixed
-     */
-    public function getInfo($name)
-    {
-        return curl_getinfo($this->curl, $name);
     }
 
     /**

@@ -18,22 +18,7 @@ class Page
     /**
      * @var string 
      */
-    public $status;
-
-    /**
-     * @var string 
-     */
     public $title;
-
-    /**
-     * @var \Atlassian\Space\Space 
-     */
-    public $space;
-
-    /**
-     * @var \Atlassian\Page\History 
-     */
-    public $history;
 
     /**
      * @var \Atlassian\Page\Attachment[] 

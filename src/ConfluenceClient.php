@@ -34,13 +34,6 @@ class ConfluenceClient
     protected $api_uri = '/rest';
 
     /**
-     * guzzle instance.
-     *
-     * @var resource
-     */
-    protected $curl;
-
-    /**
      * Monolog instance.
      *
      * @var \Monolog\Logger
@@ -102,7 +95,7 @@ class ConfluenceClient
      *
      * @return int
      */
-    private function convertLogLevel(string $log_level)
+    private function convertLogLevel(string $log_level): int
     {
         switch ($log_level) {
         case 'DEBUG':
@@ -117,73 +110,13 @@ class ConfluenceClient
     }
 
     /**
-     * Serilize only not null field.
-     *
-     * @param array $haystack
-     *
-     * @return array
-     */
-    protected function filterNullVariable($haystack)
-    {
-        foreach ($haystack as $key => $value) {
-            if (is_array($value)) {
-                $haystack[$key] = $this->filterNullVariable($haystack[$key]);
-            } elseif (is_object($value)) {
-                $haystack[$key] = $this->filterNullVariable(get_class_vars(get_class($value)));
-            }
-
-            if (is_null($haystack[$key]) || empty($haystack[$key])) {
-                unset($haystack[$key]);
-            }
-        }
-
-        return $haystack;
-    }
-
-    /**
-     *  Execute REST get action.
-     *
-     * @param $uri
-     *
-     * @return mixed
-     *
-     * @throws
-     */
-    public function get($uri)
-    {
-        $client = new \GuzzleHttp\Client(
-            [
-            'base_uri' => $this->gitHost,
-            'timeout' => 10.0,
-            'verify' => false,
-            ]
-        );
-        $response = $client->get(
-            $this->gitHost.$this->api_uri.$uri, [
-            'query' => [
-                'private_token' => $this->gitToken,
-                'per_page' => 10000,
-            ],
-            ]
-        );
-        if ($response->getStatusCode() != 200) {
-            throw GitlabException(
-                'Http request failed. status code : '
-                .$response->getStatusCode().' reason:'.$response->getReasonPhrase()
-            );
-        }
-
-        return json_decode($response->getBody());
-    }
-
-    /**
      * Execute REST request.
      *
      * @param string $context        Rest API context (ex.:issue, search, etc..)
      * @param string $post_data
      * @param string $custom_request [PUT|DELETE]
      *
-     * @return string
+     * @return string|true
      *
      * @throws ConfluenceException
      */
@@ -326,102 +259,13 @@ class ConfluenceClient
     }
 
     /**
-     * File upload.
-     *
-     * @param string $context       url context
-     * @param array  $filePathArray upload file path.
-     *
-     * @return array
-     *
-     * @throws ConfluenceException
-     */
-    public function upload($context, $filePathArray)
-    {
-        $url = $this->createUrlByContext($context);
-
-        // return value
-        $result_code = 200;
-
-        $chArr = array();
-        $results = array();
-        $mh = curl_multi_init();
-
-        for ($idx = 0; $idx < count($filePathArray); ++$idx) {
-            $file = $filePathArray[$idx];
-            if (file_exists($file) == false) {
-                $body = "File $file not found";
-                $result_code = -1;
-                goto end;
-            }
-            $chArr[$idx] = $this->createUploadHandle($url, $filePathArray[$idx]);
-
-            curl_multi_add_handle($mh, $chArr[$idx]);
-        }
-
-        $running = null;
-        do {
-            curl_multi_exec($mh, $running);
-        } while ($running > 0);
-
-         // Get content and remove handles.
-        for ($idx = 0; $idx < count($chArr); ++$idx) {
-            $ch = $chArr[$idx];
-
-            $results[$idx] = curl_multi_getcontent($ch);
-
-            // if request failed.
-            if (!$results[$idx]) {
-                $this->http_response = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                $body = curl_error($ch);
-
-                //The server successfully processed the request, but is not returning any content.
-                if ($this->http_response == 204) {
-                    continue;
-                }
-
-                // HostNotFound, No route to Host, etc Network error
-                $result_code = -1;
-                $body = 'CURL Error: = '.$body;
-                $this->log->addError($body);
-            } else {
-                // if request was ok, parsing http response code.
-                $result_code = $this->http_response = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-                // don't check 301, 302 because setting CURLOPT_FOLLOWLOCATION
-                if ($this->http_response != 200 && $this->http_response != 201) {
-                    $body = 'CURL HTTP Request Failed: Status Code : '
-                     .$this->http_response.', URL:'.$url
-                     ."\nError Message : ".$response; // @TODO undefined variable $response
-                    $this->log->addError($body);
-                }
-            }
-        }
-
-        // clean up
-        end:
-        foreach ($chArr as $ch) {
-            $this->log->addDebug('CURL Close handle..');
-            curl_close($ch);
-            curl_multi_remove_handle($mh, $ch);
-        }
-        $this->log->addDebug('CURL Multi Close handle..');
-        curl_multi_close($mh);
-        if ($result_code != 200) {
-            // @TODO $body might have not been defined
-            throw new ConfluenceException('CURL Error: = '.$body, $result_code);
-        }
-
-        return $results;
-    }
-
-    /**
      * Get URL by context.
      *
      * @param string $context
      *
      * @return string
      */
-    protected function createUrlByContext($context, $isFqdn = false)
+    protected function createUrlByContext($context, bool $isFqdn = false)
     {
         if ($isFqdn == true) {
             return $context;
@@ -438,8 +282,10 @@ class ConfluenceClient
      * @TODO session/oauth methods
      *
      * @param resource $ch
+     *
+     * @return void
      */
-    protected function authorization($ch)
+    protected function authorization($ch): void
     {
         $username = $this->getConfiguration()->getUser();
         $password = $this->getConfiguration()->getPassword();

@@ -16,10 +16,5 @@ class SearchResult
     /**
      * @var string 
      */
-    public $status;
-
-    /**
-     * @var string 
-     */
     public $title;
 }

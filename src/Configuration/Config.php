@@ -16,7 +16,10 @@ use Exception;
 class Config
 {
 
-    static protected $settings = array();
+    /**
+     * @var array
+     */
+    static protected array $settings = array();
 
     static protected $connection = 'default';
 
@@ -31,7 +34,7 @@ class Config
      */
     static protected $app;
 
-    static function init(string $app = '', $settings_file_name = 'settings.php', $connection = 'default')
+    static function init(string $app = '', $settings_file_name = 'settings.php', $connection = 'default'): void
     {
         self::setApp($app);
         self::setSettings($settings_file_name);
@@ -40,12 +43,7 @@ class Config
         }
     }
 
-    public static function getApp()
-    {
-        return self::$app;
-    }
-
-    public static function setApp($value)
+    public static function setApp(string $value): void
     {
         self::$app = $value;
     }
@@ -55,7 +53,7 @@ class Config
         return self::$connection;
     }
 
-    private static function setConnection($connection_name = 'default')
+    private static function setConnection($connection_name = 'default'): void
     {
         if (isset(self::$settings['connections']) 
             && isset(self::$settings['connections'][self::$app]) 
@@ -74,7 +72,7 @@ class Config
         return self::$settings;
     }
 
-    private static function setSettings($filename)
+    private static function setSettings($filename): void
     {
         if (file_exists($filename)) {
             include $filename;
@@ -86,26 +84,6 @@ class Config
             $error = "Settings file ($filename) not found!";
             throw new Exception($error);
         }
-    }
-
-    public static function getProducts()
-    {
-        $settings = self::getSettings();
-        $result = array();
-        if (isset($settings['products'])) {
-            $result = $settings['products'];
-        }
-        return $result;
-    }
-
-    public static function getConnections()
-    {
-        $settings = self::getSettings();
-        $result = array();
-        if (isset($settings['connections'])) {
-            $result = $settings['connections'];
-        }
-        return $result;
     }
     public static function getUser()
     {
@@ -153,15 +131,5 @@ class Config
             $error = "API URI is missing.";
             throw new Exception($error);
         }
-    }
-
-    public static function getSleep()
-    {
-        $settings = self::getSettings();
-        $result = 10;
-        if (isset($settings['sleep'])) {
-            $result = $settings['sleep'];
-        }
-        return $result;
     }
 }

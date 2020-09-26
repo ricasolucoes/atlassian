@@ -6,15 +6,23 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class IntegrationResource extends JsonResource
 {
-    public $with = [
+    /**
+     * @var true[]
+     *
+     * @psalm-var array{success: true}
+     */
+    public array $with = [
         'success' => true
     ];
 
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return array
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return (mixed|string)[]
+     *
+     * @psalm-return array{token: mixed, created_at: string, updated_at: string}
      */
     public function toArray($request)
     {

@@ -4,7 +4,7 @@ use Atlassian\ConfluenceClient;
 
 class CQLService extends ConfluenceClient
 {
-    public $uri = '/api/content/search';
+    public string $uri = '/api/content/search';
 
     public function search($paramArray = null)
     {

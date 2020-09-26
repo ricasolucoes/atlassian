@@ -60,53 +60,45 @@ class Page
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public static function init($space_key, $title)
-    {
-        return new Page($space_key, $title);
-    }
-
-    /**
      * Setter function of query property.
      *
      * @param array $query
+     *
+     * @return void
      */
-    protected static function setQuery($query)
+    protected static function setQuery($query): void
     {
         self::$query = $query;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function getQuery()
-    {
-        return self::$query;
     }
 
     /**
      * Setter function of confluence property.
      *
      * @param \Atlassian\RestApiClient\ConfluenceClient $confluence
+     *
+     * @return void
      */
-    protected static function setConfluence(ConfluenceClient $confluence)
+    protected static function setConfluence(ConfluenceClient $confluence): void
     {
         self::$confluence = $confluence;
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @return ConfluenceClient
      */
-    public static function getConfluence()
+    public static function getConfluence(): ConfluenceClient
     {
         return self::$confluence;
     }
 
     /**
      * Initiates query property with default values.
+     *
+     * @return void
      */
-    private static function initQuery()
+    private static function initQuery(): void
     {
         $query = array(
         'title' => self::$title,
@@ -118,8 +110,10 @@ class Page
 
     /**
      * Builds the query property.
+     *
+     * @return void
      */
-    protected static function buildQuery()
+    protected static function buildQuery(): void
     {
         self::initQuery();
         if (empty(self::getConfluence())) {
@@ -181,140 +175,6 @@ class Page
             $result = $page['version']['number'];
         }
         return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function exists()
-    {
-        $result = self::getId() !== false;
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function update($ancestor_id, $body)
-    {
-        $version = self::getVersion();
-        $version++;
-        $data = array(
-        'id' => self::getId(),
-        'type' => 'page',
-        'title' => self::$title,
-        'space' => array('key' => self::$spaceKey,),
-        'ancestors' => array(
-        array(
-          'type' => 'page',
-          'id' => $ancestor_id,
-        ),
-        ),
-        'body' => array(
-        'storage' => array(
-          'value' => $body,
-          'representation' => 'storage',
-        )
-        ),
-        'version' => array(
-        'number' => $version,
-        ),
-        );
-        $url = self::$confluence->createUrl('content/' . $page_id);
-
-        $result = self::put($data, $url);
-
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function add($ancestor_id, $body = '')
-    {
-        $data = array(
-        'type' => 'page',
-        'title' => self::$title,
-        'space' => array('key' => self::$spaceKey,),
-        'ancestors' => array(
-        array(
-          'type' => 'page',
-          'id' => $ancestor_id,
-        ),
-        ),
-        'body' => array(
-        'storage' => array(
-          'value' => $body,
-          'representation' => 'storage',
-        )
-        ),
-        );
-        $url = self::$confluence->createUrl('content');
-        $result = self::post($data, $url);
-
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function addImage($filename, $comment = '')
-    {
-        $content_id = self::getId();
-        $data = array(
-        'file' => '@' . $filename,
-        );
-        $json = json_encode($data);
-
-        self::buildQuery();
-        $url = self::$confluence->createUrl('content/' . $content_id . '/child/attachment');
-        $username = Config::getUser();
-        $password = Config::getPassword();
-
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($curl, CURLOPT_SAFE_UPLOAD, false);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: image/png'));
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
-
-        $response = curl_exec($curl);
-
-        $result = self::$confluence->getResult($response, $curl, $url);
-
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function delete()
-    {
-        $id = self::getId();
-        $url = self::$confluence->createUrl("content/$id");
-
-        $username = Config::getUser();
-        $password = Config::getPassword();
-
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
-
-        $response = curl_exec($curl);
-
-        $result = self::$confluence->getResult($response, $curl, $url);
-        return $result;
-
     }
 
     /**

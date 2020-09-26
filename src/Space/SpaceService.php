@@ -14,9 +14,14 @@ use Symfony\Component\VarDumper\VarDumper;
 class SpaceService extends ConfluenceClient
 {
     // override parent uri
-    public $url = '/' ;
+    public string $url = '/' ;
 
-    private $defaultParam = [
+    /**
+     * @var (int|string)[]
+     *
+     * @psalm-var array{limit: int, start: int, type: string, status: string}
+     */
+    private array $defaultParam = [
                     'limit' => 25,
                     'start' => 0,
                     'type' => 'global',
@@ -38,7 +43,6 @@ class SpaceService extends ConfluenceClient
             $paramArray = $this->defaultParam;
         }
 
-        $queryParam = null;
         if (!empty($spaceKeysParam)) {
             $spaceParam = '&';
             foreach ($spaceKeysParam as $k) {

@@ -21,14 +21,15 @@ class IntegrationCallbacks
     /**
      * Handle all model events, both Eloquent and Decoy
      *
-     * @param  string $event
-     * @param  array  $payload Contains:
+     * @param string $event
+     * @param array  $payload Contains:
      *                         -
      *                         Facilitador\Models\Base
      *                         $model
-     * @return void
+     *
+     * @return true
      */
-    public function handle($event, $payload)
+    public function handle($event, $payload): bool
     {
         list($model) = $payload;
 

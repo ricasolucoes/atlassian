@@ -55,10 +55,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  string $type
-     * @return ConfluencePage
+     * @param string $type
+     *
+     * @return self
      */
-    public function setType($type)
+    public function setType($type): self
     {
         $this->type = $type;
         return $this;
@@ -73,10 +74,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  mixed $id
-     * @return ConfluencePage
+     * @param mixed $id
+     *
+     * @return self
      */
-    public function setId($id)
+    public function setId($id): self
     {
         $this->id = $id;
         return $this;
@@ -91,10 +93,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  mixed $title
-     * @return ConfluencePage
+     * @param mixed $title
+     *
+     * @return self
      */
-    public function setTitle($title)
+    public function setTitle($title): self
     {
         $this->title = $title;
         return $this;
@@ -109,10 +112,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  mixed $space
-     * @return ConfluencePage
+     * @param mixed $space
+     *
+     * @return self
      */
-    public function setSpace($space)
+    public function setSpace($space): self
     {
         $this->space = $space;
         return $this;
@@ -127,10 +131,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  mixed $ancestors
-     * @return ConfluencePage
+     * @param mixed $ancestors
+     *
+     * @return self
      */
-    public function setAncestors($ancestors)
+    public function setAncestors($ancestors): self
     {
         $this->ancestors = $ancestors;
         return $this;
@@ -145,10 +150,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  mixed $content
-     * @return ConfluencePage
+     * @param mixed $content
+     *
+     * @return self
      */
-    public function setContent($content)
+    public function setContent($content): self
     {
         $this->content = $content;
         return $this;
@@ -163,10 +169,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  int $version
-     * @return ConfluencePage
+     * @param int $version
+     *
+     * @return self
      */
-    public function setVersion($version)
+    public function setVersion($version): self
     {
         $this->version = $version;
         return $this;
@@ -181,10 +188,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  mixed $children
-     * @return ConfluencePage
+     * @param mixed $children
+     *
+     * @return self
      */
-    public function setChildren($children)
+    public function setChildren($children): self
     {
         $this->children = $children;
         return $this;
@@ -199,10 +207,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  string $url
-     * @return ConfluencePage
+     * @param string $url
+     *
+     * @return self
      */
-    public function setUrl($url)
+    public function setUrl($url): self
     {
         $this->url = $url;
         return $this;
@@ -217,10 +226,11 @@ class ConfluencePage
     }
 
     /**
-     * @param  mixed $createdDate
-     * @return ConfluencePage
+     * @param mixed $createdDate
+     *
+     * @return self
      */
-    public function setCreatedDate($createdDate)
+    public function setCreatedDate($createdDate): self
     {
         $this->createdDate = $createdDate;
         return $this;

@@ -14,9 +14,9 @@ class PaginatedRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool
+     * @return true
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -24,9 +24,11 @@ class PaginatedRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return string[][]
+     *
+     * @psalm-return array{page: array{0: string, 1: string, 2: string}, per_page: array{0: string, 1: string, 2: string, 3: string}}
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'page' => ['filled', 'integer', 'min:1'],

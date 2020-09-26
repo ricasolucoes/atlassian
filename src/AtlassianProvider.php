@@ -16,8 +16,10 @@ class AtlassianProvider extends ServiceProvider
 
     /**
      * Bootstrap the application events.
+     *
+     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes(
             [
@@ -94,7 +96,9 @@ class AtlassianProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return string[]
+     *
+     * @psalm-return array{0: string}
      */
     public function provides()
     {

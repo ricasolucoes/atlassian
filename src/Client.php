@@ -82,11 +82,13 @@ class Client
     /**
      * Delete a page
      *
-     * @param  $id
-     * @return null
+     * @param $id
+     *
+     * @return int
+     *
      * @throws \Exception
      */
-    public function deletePage($id)
+    public function deletePage($id): int
     {
         return $this->request('DELETE', $this->curl->getHost()."/content/$id");
     }
@@ -125,12 +127,14 @@ class Client
     /**
      * Upload an attachment
      *
-     * @param  $path
-     * @param  $parentPageId
-     * @return string
+     * @param $path
+     * @param $parentPageId
+     *
+     * @return int
+     *
      * @throws \Exception
      */
-    public function uploadAttachment($path,$parentPageId)
+    public function uploadAttachment($path,$parentPageId): int
     {
         $headers = [
             'Content-Type' => 'multipart/form-data',
@@ -150,22 +154,26 @@ class Client
     /**
      * Get attachments from the page
      *
-     * @param  $pageId
-     * @return string
+     * @param $pageId
+     *
+     * @return int
+     *
      * @throws \Exception
      */
-    public function selectAttachments($pageId)
+    public function selectAttachments($pageId): int
     {
         return $this->request('GET', $this->curl->getHost()."/content/$pageId/child/attachment");
     }
 
     /**
-     * @param  string $pageId
-     * @param  array  $labels [['name'=>'example_tag'],...]
-     * @return string
+     * @param string $pageId
+     * @param array  $labels [['name'=>'example_tag'],...]
+     *
+     * @return int
+     *
      * @throws \Exception
      */
-    public function addLabel($pageId,$labels)
+    public function addLabel($pageId,$labels): int
     {
         return $this->request('POST', $this->curl->getHost()."/content/$pageId/label", $labels);
     }
@@ -178,7 +186,7 @@ class Client
      * @param array $data
      * @param array $headers
      *
-     * @return int
+     * @return false|string
      *
      * @throws \Exception
      */

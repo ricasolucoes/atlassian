@@ -35,6 +35,7 @@ class PaginatedResource extends ResourceCollection
     public function toArray($request)
     {
         $wrapper = $this->wrapper;
+        $data = null;
         if (is_callable($wrapper)) {
             $data = $wrapper($this->collection);
         } elseif (class_exists($wrapper)) {

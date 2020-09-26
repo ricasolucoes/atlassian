@@ -18,17 +18,6 @@ interface BaseInterface
      */
     public function __construct($project_id, $start_date, $end_date = null);
 
-
-    public function getProperties();
-
-    public function getClassName();
-
-    /**
-     * Getter function of projectID property.
-     *
-     * @return string
-     */
-    public function getProjectID();
     /**
      * Getter function of projectID property.
      *
@@ -46,7 +35,8 @@ interface BaseInterface
     /**
      * Setter function of startDate property.
      *
-     * @param  DateTime $start_date
+     * @param \DateTime $start_date
+     *
      * @return $this
      */
     public function setStartDate(\DateTime $start_date);
@@ -61,7 +51,7 @@ interface BaseInterface
     /**
      * Setter function of endDate property.
      *
-     * @param DateTime $end_date
+     * @param \DateTime $end_date
      *
      * @return $this
      */

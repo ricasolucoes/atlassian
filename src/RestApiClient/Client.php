@@ -37,14 +37,6 @@ class Client implements ClientInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
      * Setter of appId property.
      *
      * @param string $app_id
@@ -60,6 +52,8 @@ class Client implements ClientInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function createUrl(string $path, array $query = array())
     {

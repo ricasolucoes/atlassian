@@ -15,38 +15,20 @@ use Atlassian\Constants;
 class QuestionService extends ConfluenceClient
 {
     // override parent uri
-    public $url = '/questions/' . Constants::QUESTION_REST_API_VERSION . '/';
+    public string $url = '/questions/' . Constants::QUESTION_REST_API_VERSION . '/';
 
-    private $defaultParam = [
+    /**
+     * @var (int|string)[]
+     *
+     * @psalm-var array{limit: int, start: int, filter: string}
+     */
+    private array $defaultParam = [
                     'limit' => 10,
                     'start' => 0,
                     'filter' => 'recent',
                     ];
 
     private $accceptedAnswerId = null;
-
-    /**
-     * get question list
-     *
-     * @param  null $paramArray
-     * @return mixed
-     * @throws \Atlassian\ConfluenceException
-     */
-    public function getQuestion($paramArray = null)
-    {
-        // set default param
-        if (empty($paramArray)) {
-            $paramArray = $this->defaultParam;
-        }
-
-        $queryParam = 'question?' . http_build_query($paramArray);
-
-        $ret = $this->exec($this->url . $queryParam, null);
-
-        return $searchResults = $this->json_mapper->mapArray(
-            json_decode($ret),  new \ArrayObject(), '\Atlassian\Question\Question'
-        );
-    }
 
     /**
      * Get a question by its ID
@@ -93,22 +75,5 @@ class QuestionService extends ConfluenceClient
         $as = new AnswerService();
 
         return $as->getAnswerDetail($question->acceptedAnswerId);
-    }
-
-    /**
-     * determine question has accepted answer
-     *
-     * @param  null $questionId
-     * @return bool|null
-     */
-    public function hasAcceptedAnswer($questionId = null)
-    {
-        if ($questionId === null) {
-            return !is_null($this->accceptedAnswerId) ? true : false;
-        }
-
-        $as = $this->getAcceptedAnswer($questionId);
-
-        return !is_null($as) ? true : false;
     }
 }
