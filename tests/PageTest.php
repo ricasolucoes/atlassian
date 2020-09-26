@@ -51,8 +51,9 @@ class PageTest extends TestCase
             $i = 0;
             //foreach($p->attachments as $a) {
             foreach($p->children as $a) {
-                if ($i++ > 3)
+                if ($i++ > 3) {
                     break;
+                }
 
                 Dumper::dd($a);
                 $ret = $ps->deletePage($a->id);

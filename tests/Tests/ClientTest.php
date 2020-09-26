@@ -9,7 +9,8 @@ use Rainflute\ConfluenceClient\Entity\ConfluencePage;
 
 /**
  * Class ClientTest
- * @author  Yuxiao Tan <yuxiaota@gmail.com>
+ *
+ * @author Yuxiao Tan <yuxiaota@gmail.com>
  */
 class ClientTest extends TestCase
 {
@@ -34,8 +35,8 @@ class ClientTest extends TestCase
         $page = new ConfluencePage();
         $response = $client->createPage($page);
 
-        $this->assertInternalType('string',$response);
-        $this->assertEquals('{"result":true}',$response);
+        $this->assertInternalType('string', $response);
+        $this->assertEquals('{"result":true}', $response);
     }
 
     /**
@@ -58,8 +59,8 @@ class ClientTest extends TestCase
         $client = new Client($curl);
         $response = $client->selectPageBy(['title'=>'test']);
 
-        $this->assertInternalType('string',$response);
-        $this->assertEquals('{"result":true}',$response);
+        $this->assertInternalType('string', $response);
+        $this->assertEquals('{"result":true}', $response);
     }
 
     /**
@@ -83,15 +84,16 @@ class ClientTest extends TestCase
             ->method('execute')
             ->willReturn(['result'=>true]);
         $client = new Client($curl);
-        $response = $client->request('POST',$url,['id'=>123]);
+        $response = $client->request('POST', $url, ['id'=>123]);
 
-        $this->assertInternalType('string',$response);
-        $this->assertEquals('{"result":true}',$response);
+        $this->assertInternalType('string', $response);
+        $this->assertEquals('{"result":true}', $response);
     }
 
     /**
      * Test the exception when put invalid method
-     * @expectedException     \Exception
+     *
+     * @expectedException        \Exception
      * @expectedExceptionMessage Invalid method
      */
     public function testRequestWithInvalidMethod()
@@ -112,6 +114,6 @@ class ClientTest extends TestCase
             ->method('execute')
             ->willReturn(['result'=>true]);
         $client = new Client($curl);
-        $client->request('TEST',$url,['id'=>123]);
+        $client->request('TEST', $url, ['id'=>123]);
     }
 }

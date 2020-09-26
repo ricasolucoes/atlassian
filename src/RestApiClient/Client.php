@@ -114,7 +114,7 @@ class Client implements ClientInterface
     /**
      * {@inheritdoc}
      *
-     * @param bool|string $response
+     * @param bool|string    $response
      * @param false|resource $curl
      */
     public function getResult($response, $curl, $url)

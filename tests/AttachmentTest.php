@@ -44,8 +44,9 @@ class AttachmentTest extends TestCase
             //print attachments
             $i = 0;
             foreach($p->attachments as $a) {
-                if ($i++ > 3)
+                if ($i++ > 3) {
                     break;
+                }
 
                 dump($a);
             }
