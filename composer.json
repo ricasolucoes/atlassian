@@ -17,6 +17,7 @@
         "ext-json": "*",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
         "league/flysystem": "^1.0",
+        "laravel/helpers": "^1.1",
         "lesstif/php-jira-rest-client": "^2.0"
     },
     "require-dev": {
