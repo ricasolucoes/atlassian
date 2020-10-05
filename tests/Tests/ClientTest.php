@@ -3,9 +3,9 @@
 
 namespace Atlassian\Tests;
 
-use Rainflute\ConfluenceClient\Client;
-use Rainflute\ConfluenceClient\Curl;
-use Rainflute\ConfluenceClient\Entity\ConfluencePage;
+use Atlassian\Client;
+use Atlassian\Curl;
+use Atlassian\Entity\ConfluencePage;
 
 /**
  * Class ClientTest

@@ -3,7 +3,7 @@
 
 namespace Atlassian;
 
-use Rainflute\ConfluenceClient\Entity\ConfluencePage;
+use Atlassian\Entity\ConfluencePage;
 
 class Client
 {

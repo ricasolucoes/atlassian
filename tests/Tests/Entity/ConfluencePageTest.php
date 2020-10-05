@@ -3,8 +3,8 @@
 
 namespace Atlassian\Tests\Entity;
 
-use Rainflute\ConfluenceClient\Tests\TestCase;
-use Rainflute\ConfluenceClient\Entity\ConfluencePage;
+use Atlassian\Tests\TestCase;
+use Atlassian\Entity\ConfluencePage;
 
 /**
  * Class ConfluencePageModelTest

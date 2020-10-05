@@ -22,7 +22,8 @@ class AtlassianProvider extends ServiceProvider
         $this->publishes(
             [
             __DIR__.'/../publishes/config/atlassian.php' => config_path('atlassian.php'),
-            ], 'config'
+            ],
+            'config'
         );
 
         // View::composer(
@@ -37,7 +38,8 @@ class AtlassianProvider extends ServiceProvider
         $this->publishes(
             [
             __DIR__.'/../database/migrations/' => database_path('migrations')
-            ], 'migrations'
+            ],
+            'migrations'
         );
         
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'atlassian');
@@ -68,7 +70,8 @@ class AtlassianProvider extends ServiceProvider
         $this->publishes(
             [
             __DIR__.'/../publishes/assets' => public_path('vendor/atlassian'),
-            ], 'public'
+            ],
+            'public'
         );
     }
 
@@ -78,16 +81,8 @@ class AtlassianProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../publishes/config/atlassian.php', 'atlassian'
-        );
-        $this->app->singleton(
-            AdminLte::class, function (Container $app) {
-                return new AdminLte(
-                    $app['config']['adminlte.filters'],
-                    $app['events'],
-                    $app
-                );
-            }
+            __DIR__.'/../publishes/config/atlassian.php',
+            'atlassian'
         );
     }
     

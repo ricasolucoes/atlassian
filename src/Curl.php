@@ -6,7 +6,7 @@ namespace Atlassian;
 /**
  * Class Curl
  *
- * @package Rainflute\ConfluenceClient
+ * @package Atlassian
  */
 class Curl
 {
@@ -31,7 +31,8 @@ class Curl
         $this->curl = curl_init($host);
         $this->hostUrl = $host;
         curl_setopt_array(
-            $this->curl, [
+            $this->curl,
+            [
             CURLOPT_HTTPAUTH=>CURLAUTH_BASIC,
             CURLOPT_USERPWD=> $username . ':' . $password
             ]
