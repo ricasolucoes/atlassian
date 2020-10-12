@@ -2,16 +2,17 @@
 
 namespace Atlassian\Observers;
 
+use Atlassian\Scopes\IntegrationsScope;
+use Atlassian\Services\IntegrationsService;
+use Auth;
 use Event;
-use Log;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Log;
 use Pedreiro\Models\Base;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Throwable;
-use Illuminate\Support\Facades\Schema;
-use Auth;
-use Atlassian\Services\IntegrationsService;
-use Atlassian\Scopes\IntegrationsScope;
+
 /**
  * Call no-op classes on models for all event types.  This just simplifies
  * the handling of model events for models.
@@ -106,12 +107,10 @@ class IntegrationCallbacks
         }
         
         if ($method == 'onCreated') {
-            
             return true;
         }
         
         if ($method == 'onValidating' || $method == 'onValidated') {
-
             return true;
         }
 
