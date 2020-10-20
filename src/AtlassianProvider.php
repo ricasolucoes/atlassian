@@ -34,7 +34,7 @@ class AtlassianProvider extends ServiceProvider
         // });
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations/');
+        $this->loadMigrationsFrom(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'migrations/');
         $this->publishes(
             [
             __DIR__.'/../database/migrations/' => database_path('migrations')
