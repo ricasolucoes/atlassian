@@ -45,14 +45,14 @@ class AtlassianProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'atlassian');
         $this->publishes(
             [
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/atlassian'),
+            __DIR__.'/../resources/lang' => resource_path('lang'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'atlassian'),
             ]
         );
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'atlassian');
         $this->publishes(
             [
-            __DIR__.'/../resources/views' => resource_path('views/vendor/atlassian'),
+            __DIR__.'/../resources/views' => resource_path('views'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'atlassian'),
             ]
         );
 
