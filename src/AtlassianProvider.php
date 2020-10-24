@@ -34,7 +34,7 @@ class AtlassianProvider extends ServiceProvider
         // });
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations/');
+        $this->loadMigrationsFrom(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'migrations/');
         $this->publishes(
             [
             __DIR__.'/../database/migrations/' => database_path('migrations')
@@ -45,14 +45,14 @@ class AtlassianProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'atlassian');
         $this->publishes(
             [
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/atlassian'),
+            __DIR__.'/../resources/lang' => resource_path('lang'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'atlassian'),
             ]
         );
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'atlassian');
         $this->publishes(
             [
-            __DIR__.'/../resources/views' => resource_path('views/vendor/atlassian'),
+            __DIR__.'/../resources/views' => resource_path('views'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'atlassian'),
             ]
         );
 
