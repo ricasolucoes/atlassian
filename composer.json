@@ -56,31 +56,31 @@
             "Tests\\": "tests/"
         }
     },
-   "extra": {
-      "laravel": {
-          "providers": [
-              "Atlassian\\AtlassianProvider"
-          ],
-          "aliases": {
-              "Atlassian": "Atlassian\\Facades\\Atlassian"
-          },
-          "dont-discover": []
-      }
-  },
-  "scripts": {
-      "post-install-cmd": [],
-      "post-update-cmd": [],
-      "post-create-project-cmd": [],
-      "psalm": "vendor/bin/psalm",
-      "test": "vendor/bin/phpunit",
-      "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-      "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
-  },
-  "config": {
-      "optimize-autoloader": true,
-      "preferred-install": "dist",
-      "sort-packages": true
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "scripts": {
+        "post-install-cmd": [],
+        "post-update-cmd": [],
+        "post-create-project-cmd": [],
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Atlassian\\AtlassianProvider"
+            ],
+            "aliases": {
+                "Atlassian": "Atlassian\\Facades\\Atlassian"
+            },
+            "dont-discover": []
+        }
+    }
 }
