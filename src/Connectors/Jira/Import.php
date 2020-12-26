@@ -61,6 +61,9 @@ class Import extends Jira
         
             foreach ($prjs as $p) {
                 // $this->info(print_r($p, true));
+                // dd(
+                //     $p
+                // );
                 // Project Key:USS, Id:10021, Name:User Shipping Service, projectCategory: Desenvolvimento
                 if (!$projModel = ProjectModel::where('projectPathKey', $p->key)->first()) {
                     if (!$projModel && !$projModel = ProjectModel::where('projectPath', $p->name)->first()) {
@@ -120,6 +123,7 @@ class Import extends Jira
         $result = $this->searchIssue($jql, $paginate);
         if (!empty($result->issues)) {
             foreach ($result->issues as $issue) {
+                dd($issue);
                 if (!$issueInstance = Issue::where(['key_name' => $issue->key])->first()) {
                     $this->info('Registrando Issue: '.$issue->key);
                     $issueInstance = Issue::create(

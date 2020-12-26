@@ -8,7 +8,7 @@ namespace Atlassian\Connectors\Jira;
 use Illuminate\Database\Eloquent\Model;
 use Log;
 use App\Models\User;
-use Atlassian\Connectors\Connector;
+use Integrations\Connectors\Connector;
 use JiraRestApi\Configuration\ArrayConfiguration;
 
 class Jira extends Connector
