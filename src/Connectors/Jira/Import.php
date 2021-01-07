@@ -114,6 +114,215 @@ class Import extends Jira
         );
     }
 
+    /**
+     * JiraRestApi\Issue\Issue^ {#10833  +expand: "operations,versionedRepresentations,editmeta,changelog,renderedFields"                                                                                                                                                            
+     *       +self: "https://sitec.atlassian.net/rest/api/2/issue/11646"                                                                                                                                                                                 
+     *       +id: "11646"                                                                                                                                                                                                                                
+     *       +key: "CLP-37"                                                                                                                                                                                                                              
+     *       +fields: JiraRestApi\Issue\IssueField^ {#10841                                                                                                                                                                                              
+     *            +summary: "Formulario Representante"                                                                                                                                                                                                      
+     *            +progress: array:2 [                                                                                                                                                                                                                      
+     *              "progress" => 0                                                                                                                                                                                                                         
+     *              "total" => 0                                                                                                                                                                                                                            
+     *            ]                                                                                                                                                                                                                                         
+     *            +timeTracking: null                                                                                                                                                                                                                       
+     *            +issuetype: JiraRestApi\Issue\IssueType^ {#10909                                                                                                                                                                                          
+     *              +self: "https://sitec.atlassian.net/rest/api/2/issuetype/10039"                                                                                                                                                                         
+     *              +id: "10039"                                                                                                                                                                                                                            
+     *              +description: "Uma parte pequena e distinta do trabalho."                                                                                                                                                                               
+     *              +iconUrl: "https://sitec.atlassian.net/secure/viewavatar?size=medium&avatarId=10318&avatarType=issuetype"                                                                                                                               
+     *              +name: "Tarefa"                                                                                                                                                                                                                         
+     *              +subtask: false                                                                                                                                                                                                                         
+     *              +statuses: null                                                                                                                                                                                                                         
+     *              +avatarId: 10318                                                                                                                                                                                                                        
+     *            }                                                                                                                                                                                                                                         
+     *            +reporter: JiraRestApi\Issue\Reporter^ {#10914         
+     *              +self: "https://sitec.atlassian.net/rest/api/2/user?accountId=5de8d6473384720d187a0e83"                          
+     *              +name: null                                          
+     *              +emailAddress: "sitec@sierratecnologia.com.br"       
+     *              +avatarUrls: array:4 [                               
+     *                  "48x48" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"
+     *                  "24x24" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"
+     *                  "16x16" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"
+     *                  "32x32" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"
+     *              ]                                                    
+     *              +displayName: "Ricardo Sierra"                       
+     *              +active: "1"                                         
+     *              -wantUnassigned: false                               
+     *              +accountId: "5de8d6473384720d187a0e83"               
+     *              +"timeZone": "America/Sao_Paulo"                     
+     *              +"accountType": "atlassian"                          
+     *            }                                                      
+     *            +created: DateTime @1606796447 {#10859                 
+     *               date: 2020-12-01 01:20:47.840 -03:00                 
+     *            }                                                      
+     *            +updated: DateTime @1606796447 {#10942                 
+     *               date: 2020-12-01 01:20:47.840 -03:00                 
+     *            }                                                      
+     *            +description: null                                     
+     *            +priority: JiraRestApi\Issue\Priority^ {#10879         
+     *              +self: "https://sitec.atlassian.net/rest/api/2/priority/3"                                                       
+     *              +iconUrl: "https://sitec.atlassian.net/images/icons/priorities/medium.svg"                                       
+     *              +name: "Fazer assim que der "                        
+     *              +id: "3"                                             
+     *              +statusColor: null                                   
+     *              +description: null                                   
+     *            }                                                      
+     *            +status: JiraRestApi\Issue\IssueStatus^ {#10865        
+     *              +self: "https://sitec.atlassian.net/rest/api/2/status/10054"                                                     
+     *              +id: "10054"
+     *                                                                                                                                                                                                                
+     *      +description: "Tarefas abertas para fazer"                                                                                                                                                                                              
+     *      +iconUrl: "https://sitec.atlassian.net/images/icons/statuses/generic.png"                                                                                                                                                               
+     *      +name: "A Fazer"                                                                                                                                                                                                                        
+     *      +statuscategory: {#6231                                                                                                                                                                                                                 
+       *      +"self": "https://sitec.atlassian.net/rest/api/2/statuscategory/2"                                                                                                                                                                    
+       *      +"id": 2                                                                                                                                                                                                                              
+       *      +"key": "new"                                                                                                                                                                                                                         
+       *      +"colorName": "blue-gray"                                                                                                                                                                                                             
+       *      +"name": "Itens Pendentes"                                                                                                                                                                                                            
+      }                                                                                                                                                                                                                                       
+    }                                                                                                                                                                                                                                         
+    +labels: []                                                                                                                                                                                                                               
+    +project: JiraRestApi\Project\Project^ {#10901                                                                                                                                                                                            
+     *      +expand: null                                                                                                                                                                                                                           
+     *      +self: "https://sitec.atlassian.net/rest/api/2/project/10233"                                                                                                                                                                           
+     *      +id: "10233"                                                                                                                                                                                                                            
+     *      +key: "CLP"                                                                                                                                                                                                                             
+     *      +name: "Cliente  Local Power"                                                                                                                                                                                                           
+     *      +avatarUrls: array:4 [                                                                                                                                                                                                                  
+        "48x48" => "https://sitec.atlassian.net/secure/projectavatar?pid=10233&avatarId=10407"                                                                                                                                                
+        "24x24" => "https://sitec.atlassian.net/secure/projectavatar?size=small&s=small&pid=10233&avatarId=10407"                                                                                                                             
+        "16x16" => "https://sitec.atlassian.net/secure/projectavatar?size=xsmall&s=xsmall&pid=10233&avatarId=10407"                                                                                                                           
+        "32x32" => "https://sitec.atlassian.net/secure/projectavatar?size=medium&s=medium&pid=10233&avatarId=10407"                                                                                                                           
+      ]                                                                                                                                                                                                                                       
+     *      +projectCategory: array:4 [                                                                                                                                                                                                             
+        "self" => "https://sitec.atlassian.net/rest/api/2/projectCategory/10017"                                                                                                                                                              
+        "id" => "10017"                                                                                                                                                                                                                       
+        "description" => "Clientes ativos, com desenvolvimento em andamento"                                                                                                                                                                  
+        "name" => "Clientes"                                                                                                                                                                                                                  
+      ]                                                                                                                                                                                                                                       
+     *      +description: null                                                                                                                                                                                                                      
+     *      +lead: null                                                                                                                                                                                                                             
+     *      +leadAccountId: null                                                                                                                                                                                                                    
+     *      +components: null                                                                                                                                                                                                                       
+     *      +issueTypes: null                                                                                                                                                                                                                       
+     *      +assigneeType: null                                                                                                                                                                                                                     
+     *      +versions: null                                                                                                                                                                                                                         
+     *      +roles: null                                                                                                                                                                                                                            
+     *      +url: null                                                                                                                                                                                                                              
+     *      +projectTypeKey: "software"                                                                                                                                                                                                             
+     *      +projectTemplateKey: null                                                                                                                                                                                                               
+     *      +avatarId: null                                                                                                                                                                                                                         
+     *      +issueSecurityScheme: null                                                                                                                                                                                                              
+     *      +permissionScheme: null                                                                                                                                                                                                                 
+     *      +notificationScheme: null                                                                                                                                                                                                               
+     *      +categoryId: null                                                                                                                                                                                                                       
+     *      +"simplified": false                                                                                                                                                                                                                    
+    }     
+    +environment: null                                                                                                                                                                                                                        
+    +components: []                                                                                                                                                                                                                           
+    +comment: null                                                                                                                                                                                                                            
+    +votes: {#6203                                                                                                                                                                                                                            
+     *      +"self": "https://sitec.atlassian.net/rest/api/2/issue/CLP-37/votes"                                                                                                                                                                    
+     *      +"votes": 0                                                                                                                                                                                                                             
+     *      +"hasVoted": false                                                                                                                                                                                                                      
+    }                                                                                                                                                                                                                                         
+    +resolution: null                                                                                                                                                                                                                         
+    +fixVersions: []                                                                                                                                                                                                                          
+    +creator: JiraRestApi\Issue\Reporter^ {#10911                                                                                                                                                                                             
+     *      +self: "https://sitec.atlassian.net/rest/api/2/user?accountId=5de8d6473384720d187a0e83"                                                                                                                                                 
+     *      +name: null                                                                                                                                                                                                                             
+     *      +emailAddress: "sitec@sierratecnologia.com.br"                                                                                                                                                                                          
+     *      +avatarUrls: array:4 [                                                                                                                                                                                                                  
+        "48x48" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"                                                  
+        "24x24" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"                                                  
+        "16x16" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"                                                  
+        "32x32" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"                                                  
+      ]                                                                                                                                                                                                                                       
+     *      +displayName: "Ricardo Sierra"                                                                                                                                                                                                          
+     *      +active: "1"                                                                                                                                                                                                                            
+      -wantUnassigned: false                                                                                                                                                                                                                  
+     *      +accountId: "5de8d6473384720d187a0e83"                                                                                                                                                                                                  
+     *      +"timeZone": "America/Sao_Paulo"                                                                                                                                                                                                        
+     *      +"accountType": "atlassian"                                                                                                                                                                                                             
+    }                                                                                                                                                                                                                                         
+    +watches: {#6220                                                                                                                                                                                                                          
+     *      +"self": "https://sitec.atlassian.net/rest/api/2/issue/CLP-37/watchers"                                                                                                                                                                 
+     *      +"watchCount": 1                                                                                                                                                                                                                        
+     *      +"isWatching": true                                                                                                                                                                                                                     
+    }                                                                                                                                                                                                                                         
+    +worklog: null                                                                                                                                                                                                                            
+    +assignee: JiraRestApi\Issue\Reporter^ {#10872                                                                                                                                                                                            
+     *      +self: "https://sitec.atlassian.net/rest/api/2/user?accountId=5de8d6473384720d187a0e83"                                                                                                                                                 
+     *      +name: null                                                                                                                                                                                                                             
+     *      +emailAddress: "sitec@sierratecnologia.com.br"                                                                                                                                                                                          
+     *      +avatarUrls: array:4 [                                                                                                                                                                                                                  
+        "48x48" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"                                                  
+        "24x24" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"                                                  
+        "16x16" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"                                                  
+        "32x32" => "https://secure.gravatar.com/avatar/3764b8198eee20a62c0ec828c9c38d16?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FRS-1.png"                                                  
+      ]                                                                                                                                                                                                                                       
+     *      +displayName: "Ricardo Sierra" 
+          *      +active: "1"
+      -wantUnassigned: false
+     *      +accountId: "5de8d6473384720d187a0e83"
+     *      +"timeZone": "America/Sao_Paulo"
+     *      +"accountType": "atlassian"
+    }
+    +versions: []
+    +attachment: null
+    +aggregatetimespent: null
+    +timeestimate: null
+    +aggregatetimeoriginalestimate: null
+    +resolutiondate: null
+    +duedate: null
+    +issuelinks: []
+    +subtasks: []
+    +workratio: -1
+    +aggregatetimeestimate: null
+    +aggregateprogress: {#6204
+      +"progress": 0
+      +"total": 0
+    }
+    +lastViewed: null
+    +timeoriginalestimate: null
+    +parent: null
+    +customFields: array:6 [
+      "customfield_10031" => "1|i008xb:"
+      "customfield_10034" => "3110400"
+      "customfield_10018" => {#6434
+        +"hasEpicLinkFieldDependency": false
+        +"showField": false
+        +"nonEditableReason": {#6193
+          +"reason": "PLUGIN_LICENSE_ERROR"
+          +"message": "O link pai só está disponível para usuários do Jira Premium."
+        }
+      }
+      "customfield_10019" => "0|i008zb:"
+      "customfield_10014" => "CLP-10"
+      "customfield_10000" => "{}"
+    ]
+    +security: null
+    +"statuscategorychangedate": "2020-12-01T01:20:48.147-0300"
+    +"timespent": null
+    +"customfield_10031": "1|i008xb:"
+    +"customfield_10034": "3110400"
+    +"customfield_10018": {#6434}
+    +"customfield_10019": "0|i008zb:"
+    +"customfield_10014": "CLP-10"
+    +"customfield_10000": "{}"
+  }
+  +renderedFields: null
+  +names: null
+  +schema: null
+  +transitions: null
+  +operations: null
+  +editmeta: null
+  +changelog: null
+}
+
+     */
     public function getIssuesFromProject($project)
     {
         // $jql = 'status = Documentação ORDER BY created DESC';
@@ -130,14 +339,16 @@ class Import extends Jira
                         [
                         'key_name' => $issue->key,
                         'url' => $issue->self,
+                        // 'id' => $issue->id,
+                        'expand' => $issue->expand,
                         // 'created_at' => $issue->created,
                         // 'updated_at' => $issue->updated
                         // 'sumary' => '', @todo fazer aqui
                         ]
                     );
-                    if (!empty($issue->fields)) {
-                        $issueInstance->setField($issue->fields, $issue->key);
-                    }
+                }
+                if (!empty($issue->fields)) {
+                    $issueInstance->setField($issue->fields, $issue->key);
                 }
             }
         }
@@ -161,9 +372,8 @@ class Import extends Jira
         }
     }
 
-    /**
+    /**     
      * @todo
-     *
      * @param  [type] $project
      * @return void
      */
