@@ -51,6 +51,7 @@ class CreateIntegrationsTables extends Migration
                 $table->string('customize_url')->nullable();
                 $table->bigInteger('integration_id')->unsigned();
                 $table->unique(['username', 'integration_id']);
+                $table->text('obs')->nullable();
                 $table->timestamps();
                 $table->softDeletes();
             }
