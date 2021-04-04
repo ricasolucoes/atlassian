@@ -332,7 +332,7 @@ class Import extends Jira
         $result = $this->searchIssue($jql, $paginate);
         if (!empty($result->issues)) {
             foreach ($result->issues as $issue) {
-                dd($issue);
+                dd('Issues From Projeto', $issue);
                 if (!$issueInstance = Issue::where(['key_name' => $issue->key])->first()) {
                     $this->info('Registrando Issue: '.$issue->key);
                     $issueInstance = Issue::create(
