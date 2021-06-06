@@ -42,7 +42,6 @@ Session.vim
 *~
 .idea/
 
-composer.lock
 config.php
 config.jira.json
 jira-rest-client.log

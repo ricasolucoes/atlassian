@@ -1,6 +1,6 @@
 <?php
 
-namespace Siravel\Interfaces;
+namespace Muleta\Interfaces;
 
 interface LogisticServiceInterface
 {
