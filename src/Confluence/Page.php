@@ -61,8 +61,10 @@ class Page
 
     /**
      * {@inheritdoc}
+     *
+     * @return self
      */
-    public static function init($space_key, $title)
+    public static function init($space_key, $title): self
     {
         return new Page($space_key, $title);
     }
@@ -71,16 +73,20 @@ class Page
      * Setter function of query property.
      *
      * @param array $query
+     *
+     * @return void
      */
-    protected static function setQuery($query)
+    protected static function setQuery($query): void
     {
         self::$query = $query;
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @return array
      */
-    public static function getQuery()
+    public static function getQuery(): array
     {
         return self::$query;
     }
@@ -89,24 +95,30 @@ class Page
      * Setter function of confluence property.
      *
      * @param \Atlassian\RestApiClient\ConfluenceClient $confluence
+     *
+     * @return void
      */
-    protected static function setConfluence(ConfluenceClient $confluence)
+    protected static function setConfluence(ConfluenceClient $confluence): void
     {
         self::$confluence = $confluence;
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @return ConfluenceClient
      */
-    public static function getConfluence()
+    public static function getConfluence(): ConfluenceClient
     {
         return self::$confluence;
     }
 
     /**
      * Initiates query property with default values.
+     *
+     * @return void
      */
-    private static function initQuery()
+    private static function initQuery(): void
     {
         $query = array(
         'title' => self::$title,
@@ -118,8 +130,10 @@ class Page
 
     /**
      * Builds the query property.
+     *
+     * @return void
      */
-    protected static function buildQuery()
+    protected static function buildQuery(): void
     {
         self::initQuery();
         if (empty(self::getConfluence())) {
@@ -185,8 +199,10 @@ class Page
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
-    public static function exists()
+    public static function exists(): bool
     {
         $result = self::getId() !== false;
         return $result;
@@ -325,7 +341,7 @@ class Page
      *
      * @return mixed|string
      */
-    private static function post(array $data, $url)
+    private static function post(array $data, string $url)
     {
         $json = json_encode($data);
         $username = Config::getUser();
@@ -357,7 +373,7 @@ class Page
      *
      * @return mixed|string
      */
-    private static function put($data, $url)
+    private static function put($data, string $url)
     {
         $json = json_encode($data);
         $username = Config::getUser();

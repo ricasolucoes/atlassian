@@ -18,9 +18,9 @@ class Bitbucket
      * @param string $username Username
      * @param string $password Password
      *
-     * @return bool
+     * @return void
      */
-    public function authenticate($uri, $username, $password, $team, $repo)
+    public function authenticate($uri, $username, $password, $team, $repo): void
     {
         $this->uri = $uri;
         $this->username = $username;
@@ -116,9 +116,11 @@ class Bitbucket
      *
      * @param string $key jira key
      *
-     * @return array (containing id's of pr's)
+     * @return array|null (containing id's of pr's)
+     *
+     * @psalm-return list<mixed>|null
      */
-    public function getPrsByKey($key)
+    public function getPrsByKey($key): ?array
     {
         if ($this->isAuthenticated()) {
             $url = $this->uri . "/2.0/repositories/" . $this->team . "/" . $this->repo . "/" . "pullrequests?state=OPEN&q=source.branch.name+%7E+%22" . $key . "%22+AND+state+%3D+%22OPEN%22";
@@ -144,9 +146,11 @@ class Bitbucket
      *
      * @param string $key jira key
      *
-     * @return array (containing branch names)
+     * @return array|null (containing branch names)
+     *
+     * @psalm-return list<mixed>|null
      */
-    public function getBranchesByKey($key)
+    public function getBranchesByKey($key): ?array
     {
         if ($this->isAuthenticated()) {
             $url = $this->uri . "/2.0/repositories/" . $this->team . "/" . $this->repo . "/" . "refs/branches?q=name+%7E+%22" . $key . "%22";
@@ -173,7 +177,7 @@ class Bitbucket
      * @param string $key     PR id
      * @param string $comment Text of the comment
      *
-     * @return array
+     * @return bool|string
      */
     public function addComment($key, $comment)
     {
@@ -205,9 +209,11 @@ class Bitbucket
      *
      * @param string $branch branch name
      *
-     * @return array
+     * @return array|null
+     *
+     * @psalm-return list<mixed>|null
      */
-    public function getOpenPrIdsForBranch($branch)
+    public function getOpenPrIdsForBranch($branch): ?array
     {
         if ($this->isAuthenticated()) {
             $url = $this->uri . "/2.0/repositories/" . $this->team . "/" . $this->repo . "/" . "pullrequests?state=OPEN&q=source.branch.name+%3D+%22" . $branch . "%22+AND+state+%3D+%22OPEN%22";
@@ -234,7 +240,7 @@ class Bitbucket
      *
      * @param string $key PR id
      *
-     * @return array
+     * @return bool|string
      */
     public function mergePr($key)
     {
@@ -266,7 +272,7 @@ class Bitbucket
      *
      * @param string $key PR id
      *
-     * @return array
+     * @return bool|string
      */
     public function declinePr($key)
     {
@@ -300,31 +306,8 @@ class Bitbucket
      * @param string $commit commit hash
      * @param string $pipeline name of pipeline
      *
-     * @return array
+     * @return bool|string
      */
-
-    /*
-    $ curl -X POST -is -u username:password \
-      -H 'Content-Type: application/json' \
-     https://api.bitbucket.org/2.0/repositories/jeroendr/meat-demo2/pipelines/ \
-     -d '
-      {
-         "target": {
-          "commit": {
-             "hash":"a3c4e02c9a3755eccdc3764e6ea13facdf30f923",
-             "type":"commit"
-           },
-           "selector": {
-              "type": "custom",
-              "pattern": "Deploy to production"
-           },
-           "type": "pipeline_ref_target",
-           "ref_name": "master",
-           "ref_type": "branch"
-         }
-      }'
-    */
-
     public function runPipeline($branch, $pipeline)
     {
         $url = $this->uri . "/2.0/repositories/" . $this->team . "/" . $this->repo . "/" . "pipelines/";

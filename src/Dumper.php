@@ -11,8 +11,10 @@ class Dumper
      * Dump a value with elegance.
      *
      * @param mixed $value
+     *
+     * @return void
      */
-    public static function dump($value)
+    public static function dump($value): void
     {
         if (class_exists(CliDumper::class)) {
             $dumper = 'cli' === PHP_SAPI ? new CliDumper() : new HtmlDumper();
@@ -22,6 +24,9 @@ class Dumper
         }
     }
 
+    /**
+     * @return never
+     */
     public static function dd($x)
     {
         array_map(

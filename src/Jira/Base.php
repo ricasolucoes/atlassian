@@ -44,6 +44,11 @@ class Base implements BaseInterface
     }
 
 
+    /**
+     * @return (DateTime|string)[]
+     *
+     * @psalm-return array{projectID: string, startDate: DateTime, endDate: DateTime}
+     */
     public function getProperties()
     {
         $result = get_object_vars($this);
@@ -51,7 +56,10 @@ class Base implements BaseInterface
         return $result;
     }
 
-    public function getClassName()
+    /**
+     * @return get-class-of<$this, Atlassian\Jira\Base&static>
+     */
+    public function getClassName(): string
     {
         return get_class($this);
     }
@@ -66,8 +74,10 @@ class Base implements BaseInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
-    public function setProjectID($project_id)
+    public function setProjectID(string $project_id)
     {
         $this->projectID = $project_id;
     }
@@ -82,6 +92,8 @@ class Base implements BaseInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param \DateTime $start_date
      */
     public function setStartDate(\DateTime $start_date)
     {
@@ -100,6 +112,8 @@ class Base implements BaseInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param \DateTime $end_date
      */
     public function setEndDate(\DateTime $end_date)
     {

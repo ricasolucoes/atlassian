@@ -38,8 +38,10 @@ class Client implements ClientInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -60,6 +62,8 @@ class Client implements ClientInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function createUrl(string $path, array $query = array())
     {
@@ -80,7 +84,7 @@ class Client implements ClientInterface
     /**
      * {@inheritdoc}
      */
-    public function exec($url)
+    public function exec(string $url)
     {
         $this->url = urldecode($url);
         $username = Config::getUser();
@@ -117,7 +121,7 @@ class Client implements ClientInterface
      * @param bool|string $response
      * @param false|resource $curl
      */
-    public function getResult($response, $curl, $url)
+    public function getResult($response, $curl, string $url)
     {
         // If request failed.
         if (!$response) {

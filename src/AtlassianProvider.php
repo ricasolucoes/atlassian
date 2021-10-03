@@ -16,8 +16,10 @@ class AtlassianProvider extends ServiceProvider
 
     /**
      * Bootstrap the application events.
+     *
+     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes(
             [
