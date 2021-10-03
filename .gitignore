@@ -6,8 +6,7 @@ vendor/
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
-
+# 
 
 ### Editor (Vim, PhpStorm) ###
 [._]*.s[a-w][a-z]
@@ -18,7 +17,6 @@ Session.vim
 *~
 .idea/
 
-composer.lock
 config.php
 config.jira.json
 jira-rest-client.log
@@ -30,8 +28,7 @@ confluence-rest-client.log
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
-
+# 
 
 ### Editor (Vim, PhpStorm) ###
 [._]*.s[a-w][a-z]
@@ -42,7 +39,6 @@ Session.vim
 *~
 .idea/
 
-composer.lock
 config.php
 config.jira.json
 jira-rest-client.log
