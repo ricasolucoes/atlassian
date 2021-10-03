@@ -31,7 +31,7 @@ class Config
      */
     static protected $app;
 
-    static function init(string $app = '', $settings_file_name = 'settings.php', $connection = 'default')
+    static function init(string $app = '', $settings_file_name = 'settings.php', $connection = 'default'): void
     {
         self::setApp($app);
         self::setSettings($settings_file_name);
@@ -40,12 +40,12 @@ class Config
         }
     }
 
-    public static function getApp()
+    public static function getApp(): string
     {
         return self::$app;
     }
 
-    public static function setApp($value)
+    public static function setApp(string $value): void
     {
         self::$app = $value;
     }
@@ -55,7 +55,7 @@ class Config
         return self::$connection;
     }
 
-    private static function setConnection($connection_name = 'default')
+    private static function setConnection($connection_name = 'default'): void
     {
         if (isset(self::$settings['connections']) 
             && isset(self::$settings['connections'][self::$app]) 
@@ -74,7 +74,7 @@ class Config
         return self::$settings;
     }
 
-    private static function setSettings($filename)
+    private static function setSettings($filename): void
     {
         if (file_exists($filename)) {
             include $filename;

@@ -82,8 +82,10 @@ class Client
     /**
      * Delete a page
      *
-     * @param  $id
-     * @return null
+     * @param $id
+     *
+     * @return false|string
+     *
      * @throws \Exception
      */
     public function deletePage($id)
@@ -94,8 +96,10 @@ class Client
     /**
      * Search page by title, space key, type or id
      *
-     * @param  $parameters
-     * @return int
+     * @param $parameters
+     *
+     * @return false|string
+     *
      * @throws \Exception
      */
     public function selectPageBy($parameters)
@@ -125,9 +129,11 @@ class Client
     /**
      * Upload an attachment
      *
-     * @param  $path
-     * @param  $parentPageId
-     * @return string
+     * @param $path
+     * @param $parentPageId
+     *
+     * @return false|string
+     *
      * @throws \Exception
      */
     public function uploadAttachment($path,$parentPageId)
@@ -150,8 +156,10 @@ class Client
     /**
      * Get attachments from the page
      *
-     * @param  $pageId
-     * @return string
+     * @param $pageId
+     *
+     * @return false|string
+     *
      * @throws \Exception
      */
     public function selectAttachments($pageId)
@@ -160,9 +168,11 @@ class Client
     }
 
     /**
-     * @param  string $pageId
-     * @param  array  $labels [['name'=>'example_tag'],...]
-     * @return string
+     * @param string $pageId
+     * @param array  $labels [['name'=>'example_tag'],...]
+     *
+     * @return false|string
+     *
      * @throws \Exception
      */
     public function addLabel($pageId,$labels)
@@ -178,7 +188,7 @@ class Client
      * @param array $data
      * @param array $headers
      *
-     * @return int
+     * @return false|string
      *
      * @throws \Exception
      */

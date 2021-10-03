@@ -18,9 +18,9 @@ class Jira
      * @param string $username Username
      * @param string $password Password
      *
-     * @return bool
+     * @return void
      */
-    public function authenticate($uri, $username, $password)
+    public function authenticate($uri, $username, $password): void
     {
         $this->uri = $uri;
         $this->username = $username;
@@ -184,7 +184,7 @@ class Jira
      * @param string $key  Issue key
      * @param array  $data Data for fields
      *
-     * @return array|boolean
+     * @return bool|string
      */
     public function updateIssue($key, $data)
     {
@@ -220,7 +220,7 @@ class Jira
      *
      * @param array $data Data for fields
      *
-     * @return array|boolean
+     * @return bool|string
      */
     public function createIssue($data)
     {
@@ -318,7 +318,7 @@ class Jira
      * @param string $key     Issue key
      * @param string $comment Text of the comment
      *
-     * @return array
+     * @return bool|string
      */
     public function addComment($key, $comment)
     {

@@ -103,9 +103,9 @@ abstract class AbstractConfiguration implements ConfigurationInterface
     }
 
     /**
-     * @return bool
+     * @return int
      */
-    public function isTimeOut()
+    public function isTimeOut(): int
     {
         return $this->timeOut;
     }

@@ -46,7 +46,8 @@ interface BaseInterface
     /**
      * Setter function of startDate property.
      *
-     * @param  DateTime $start_date
+     * @param \DateTime $start_date
+     *
      * @return $this
      */
     public function setStartDate(\DateTime $start_date);
@@ -61,7 +62,7 @@ interface BaseInterface
     /**
      * Setter function of endDate property.
      *
-     * @param DateTime $end_date
+     * @param \DateTime $end_date
      *
      * @return $this
      */

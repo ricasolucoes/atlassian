@@ -36,7 +36,7 @@ class PageService extends ConfluenceClient
         );
     }
 
-    public function deletePage($pageOrAttachmentId)
+    public function deletePage($pageOrAttachmentId): string
     {
         $url = sprintf('%s/%s', $this->uri, $pageOrAttachmentId);
 
@@ -45,7 +45,7 @@ class PageService extends ConfluenceClient
         return $this->http_response;
     }
 
-    public function getChildPage($pageId)
+    public function getChildPage($pageId): Page
     {
         $p = new Page();
 
@@ -107,12 +107,16 @@ class PageService extends ConfluenceClient
     /**
      * download all attachment in the current page
      *
-     * @param  $pageId
-     * @param  $destination output directory
-     * @return Page
+     * @param $pageId
+     * @param $destination output directory
+     *
+     * @return array
+     *
      * @throws \Atlassian\ConfluenceException
+     *
+     * @psalm-return list<mixed>
      */
-    public function downloadAttachments($pageId, $destination = '.' )
+    public function downloadAttachments($pageId, $destination = '.' ): array
     {
         $page = $this->getPage($pageId);
 

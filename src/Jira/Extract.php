@@ -48,14 +48,18 @@ class Extract extends Base implements ExtractInterface
 
     /**
      * @param (int|string)[] $query
+     *
+     * @return void
      */
-    protected function setQuery(array $query)
+    protected function setQuery(array $query): void
     {
         $this->query = $query;
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @return array
      */
     public function getQuery()
     {
@@ -63,13 +67,15 @@ class Extract extends Base implements ExtractInterface
     }
 
 
-    protected function setJira(Jira $jira)
+    protected function setJira(Jira $jira): void
     {
         $this->jira = $jira;
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @return JiraClient
      */
     public function getJira()
     {
@@ -78,6 +84,8 @@ class Extract extends Base implements ExtractInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return int
      */
     public function getCount()
     {
@@ -86,6 +94,8 @@ class Extract extends Base implements ExtractInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return static
      */
     public function setCount($count)
     {
@@ -96,8 +106,10 @@ class Extract extends Base implements ExtractInterface
 
     /**
      * Initialize $query property.
+     *
+     * @return void
      */
-    private function initQuery()
+    private function initQuery(): void
     {
         $query = array(
         'jql' => '',
@@ -108,12 +120,12 @@ class Extract extends Base implements ExtractInterface
         $this->setQuery($query);
     }
 
-    protected function buildQuery()
+    protected function buildQuery(): void
     {
         $this->initQuery();
     }
 
-    protected function extract()
+    protected function extract(): void
     {
         $this->buildQuery();
         $url = $this->jira->createUrl('search', $this->query);
@@ -151,6 +163,8 @@ class Extract extends Base implements ExtractInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function addFilter(array $filter)
     {

@@ -183,7 +183,7 @@ class ConfluenceClient
      * @param string $post_data
      * @param string $custom_request [PUT|DELETE]
      *
-     * @return string
+     * @return string|true
      *
      * @throws ConfluenceException
      */
@@ -421,7 +421,7 @@ class ConfluenceClient
      *
      * @return string
      */
-    protected function createUrlByContext($context, $isFqdn = false)
+    protected function createUrlByContext($context, bool $isFqdn = false)
     {
         if ($isFqdn == true) {
             return $context;
@@ -438,8 +438,10 @@ class ConfluenceClient
      * @TODO session/oauth methods
      *
      * @param resource $ch
+     *
+     * @return void
      */
-    protected function authorization($ch)
+    protected function authorization($ch): void
     {
         $username = $this->getConfiguration()->getUser();
         $password = $this->getConfiguration()->getPassword();
