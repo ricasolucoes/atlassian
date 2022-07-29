@@ -12,10 +12,10 @@
     "homepage": "https://github.com/ricasolucoes/atlassian",
     "license": "MIT",
     "require": {
-        "php": "^7.1",
+        "php": "^7.2|^8.0",
         "ext-curl": "*",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^6.0 || ^7.0",
+        "guzzlehttp/guzzle": "^6.0|^7.0|^8.0",
         "league/flysystem": "^1.0",
         "laravel/helpers": "^1.1",
         "lesstif/php-jira-rest-client": "^2.0"
