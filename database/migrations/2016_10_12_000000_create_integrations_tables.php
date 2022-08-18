@@ -44,6 +44,7 @@ class CreateIntegrationsTables extends Migration
             'accounts', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id')->unsigned();
+                $table->string('pk', 255)->nullable();
                 $table->string('username', 255);
                 $table->string('email')->nullable();
                 $table->string('password')->nullable();
@@ -61,7 +62,7 @@ class CreateIntegrationsTables extends Migration
                 $table->foreign('integration_id')->references('id')->on('integrations');
             }
         );
-        
+
         /**
          * Accountables
          */
@@ -82,7 +83,7 @@ class CreateIntegrationsTables extends Migration
                 $table->foreign('account_id')->references('id')->on('accounts');
             }
         );
-        
+
         /**
          * Tokens
          */
