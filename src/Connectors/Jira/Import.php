@@ -7,13 +7,13 @@ use Casa\Models\Calendar\Estimate;
 
 use Casa\Models\Calendar\Event;
 use Casa\Models\Registers\Spent;
-use Fabrica\Models\Code\CodeIssueLink;
-use Fabrica\Models\Code\Field as FieldModel;
+use Finder\Models\Code\CodeIssueLink;
+use Finder\Models\Code\Field as FieldModel;
 
-use Fabrica\Models\Code\Issue;
+use Finder\Models\Code\Issue;
 
-use Fabrica\Models\Code\Project as ProjectModel;
-use Fabrica\Models\Code\Release;
+use Finder\Models\Code\Project as ProjectModel;
+use Finder\Models\Code\Release;
 use JiraRestApi\Field\Field;
 use JiraRestApi\Field\FieldService;
 

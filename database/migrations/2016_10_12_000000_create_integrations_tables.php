@@ -45,13 +45,13 @@ class CreateIntegrationsTables extends Migration
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id')->unsigned();
                 $table->string('pk', 255)->nullable();
-                $table->string('username', 255);
+                $table->string('username', 255)->nullable();
                 $table->string('email')->nullable();
                 $table->string('password')->nullable();
                 $table->integer('status')->default(1);
                 $table->string('customize_url')->nullable();
                 $table->bigInteger('integration_id')->unsigned();
-                $table->unique(['username', 'integration_id']);
+                $table->unique(['pk','username', 'integration_id']);
                 $table->text('obs')->nullable();
                 $table->timestamps();
                 $table->softDeletes();
