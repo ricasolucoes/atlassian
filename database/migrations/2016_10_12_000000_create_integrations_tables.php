@@ -13,8 +13,7 @@ class CreateIntegrationsTables extends Migration
      */
     public function up()
     {
-        Schema::create(
-            'integrations', function (Blueprint $table) {
+        Schema::hasTable('integrations') || Schema::create('integrations', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id')->unsigned();
                 $table->string('name', 255)->nullable();
@@ -25,8 +24,7 @@ class CreateIntegrationsTables extends Migration
                 $table->softDeletes();
             }
         );
-        Schema::create(
-            'services', function (Blueprint $table) {
+        Schema::hasTable('services') || Schema::create('services', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id')->unsigned();
                 $table->string('name', 255)->nullable();
@@ -40,8 +38,7 @@ class CreateIntegrationsTables extends Migration
         /**
          * Account
          */
-        Schema::create(
-            'accounts', function (Blueprint $table) {
+        Schema::hasTable('accounts') || Schema::create('accounts', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id')->unsigned();
                 $table->string('pk', 255)->nullable();
@@ -66,8 +63,7 @@ class CreateIntegrationsTables extends Migration
         /**
          * Accountables
          */
-        Schema::create(
-            'accountables', function (Blueprint $table) {
+        Schema::hasTable('accountables') || Schema::create('accountables', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id')->unsigned();
                 $table->bigInteger('account_id')->unsigned(); //->nullable();
@@ -87,8 +83,7 @@ class CreateIntegrationsTables extends Migration
         /**
          * Tokens
          */
-        Schema::create(
-            'tokens', function (Blueprint $table) {
+        Schema::hasTable('tokens') || Schema::create('tokens', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('token');
                 $table->integer('status')->default(1);

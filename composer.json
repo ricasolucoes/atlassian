@@ -12,29 +12,25 @@
     "homepage": "https://github.com/ricasolucoes/atlassian",
     "license": "MIT",
     "require": {
-        "php": "^7.2|^8.0",
+        "php": "^8.3",
         "ext-curl": "*",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^6.0|^7.0|^8.0",
-        "league/flysystem": "^1.0",
-        "laravel/helpers": "^1.1",
-        "lesstif/php-jira-rest-client": "^2.0"
+        "guzzlehttp/guzzle": "^7.10",
+        "league/flysystem": "^3.36",
+        "laravel/helpers": "^1.8",
+        "lesstif/php-jira-rest-client": "^5.12"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.6",
-        "codedungeon/phpunit-result-printer": ">=0.27.0",
-        "fakerphp/faker": "^1.5",
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "laravel/browser-kit-testing": "^6.0",
+        "fakerphp/faker": "^1.23",
+        "friendsofphp/php-cs-fixer": "^3.68",
         "laravel/dusk": "^6.2",
-        "mockery/mockery": "^1.0",
-        "orchestra/testbench": "^6.0",
-        "phpro/grumphp": "^1.3",
-        "phpunit/phpunit": "^9.0",
-        "psalm/plugin-laravel": "^1.5",
-        "squizlabs/php_codesniffer": "^3.4",
-        "vimeo/psalm": "^4.0"
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^11.0",
+        "phpro/grumphp": "^2.12",
+        "phpunit/phpunit": "^12.0",
+        "squizlabs/php_codesniffer": "^3.11"
     },
     "suggest": {
         "netresearch/jsonmapper": "^3.0",
@@ -48,8 +44,8 @@
         }
     ],
     "autoload": {
-        "psr-4" : {
-            "Atlassian\\" : "src"
+        "psr-4": {
+            "Atlassian\\": "src"
         }
     },
     "autoload-dev": {
@@ -57,31 +53,32 @@
             "Tests\\": "tests/"
         }
     },
-   "extra": {
-      "laravel": {
-          "providers": [
-              "Atlassian\\AtlassianProvider"
-          ],
-          "aliases": {
-              "Atlassian": "Atlassian\\Facades\\Atlassian"
-          },
-          "dont-discover": []
-      }
-  },
-  "scripts": {
-      "post-install-cmd": [],
-      "post-update-cmd": [],
-      "post-create-project-cmd": [],
-      "psalm": "vendor/bin/psalm",
-      "test": "vendor/bin/phpunit",
-      "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-      "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
-  },
-  "config": {
-      "optimize-autoloader": true,
-      "preferred-install": "dist",
-      "sort-packages": true
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Atlassian\\AtlassianProvider"
+            ],
+            "aliases": {
+                "Atlassian": "Atlassian\\Facades\\Atlassian"
+            },
+            "dont-discover": []
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [],
+        "post-update-cmd": [],
+        "post-create-project-cmd": [],
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "version": "2.0.0"
 }
