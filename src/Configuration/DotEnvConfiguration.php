@@ -10,9 +10,11 @@ class DotEnvConfiguration extends AbstractConfiguration
      */
     public function __construct($path = '.')
     {
-        $dotenv = new \Dotenv\Dotenv($path);
-        $dotenv->load();
-        $dotenv->required(['CONFLUENCE_HOST']);
+        $dotenv = \Dotenv\Dotenv::createUnsafeMutable($path);
+        $dotenv->safeLoad();
+        if (file_exists($path . '/.env')) {
+            $dotenv->required(['CONFLUENCE_HOST']);
+        }
 
         $this->host = $this->env('CONFLUENCE_HOST');
         $this->user = $this->env('CONFLUENCE_USER');
@@ -58,7 +60,7 @@ class DotEnvConfiguration extends AbstractConfiguration
             return;
         }
 
-        if ($this->startsWith($value, '"') && endsWith($value, '"')) {
+        if ($this->startsWith($value, '"') && $this->endsWith($value, '"')) {
             return substr($value, 1, -1);
         }
 

@@ -20,11 +20,12 @@ class Temperature
     }
 }
 
-class MockTest extends PHPUnit_Framework_TestCase
+class MockTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
+        parent::tearDown();
     }
 
     public function testGetsAverageTemperatureFromThreeServiceReadings()

@@ -3,6 +3,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateIntegrationsTables extends Migration
 {
@@ -54,11 +55,13 @@ class CreateIntegrationsTables extends Migration
                 $table->softDeletes();
             }
         );
-        Schema::table(
-            'accounts', function (Blueprint $table) {
-                $table->foreign('integration_id')->references('id')->on('integrations');
-            }
-        );
+        if (Schema::hasTable('accounts') && Schema::hasTable('integrations')) {
+            Schema::table(
+                'accounts', function (Blueprint $table) {
+                    $table->foreign('integration_id')->references('id')->on('integrations');
+                }
+            );
+        }
 
         /**
          * Accountables
@@ -74,11 +77,13 @@ class CreateIntegrationsTables extends Migration
                 $table->softDeletes();
             }
         );
-        Schema::table(
-            'accountables', function (Blueprint $table) {
-                $table->foreign('account_id')->references('id')->on('accounts');
-            }
-        );
+        if (Schema::hasTable('accountables') && Schema::hasTable('accounts')) {
+            Schema::table(
+                'accountables', function (Blueprint $table) {
+                    $table->foreign('account_id')->references('id')->on('accounts');
+                }
+            );
+        }
 
         /**
          * Tokens
@@ -94,11 +99,13 @@ class CreateIntegrationsTables extends Migration
                 $table->timestamps();
             }
         );
-        Schema::table(
-            'tokens', function (Blueprint $table) {
-                $table->foreign('account_id')->references('id')->on('accounts');
-            }
-        );
+        if (Schema::hasTable('tokens') && Schema::hasTable('accounts')) {
+            Schema::table(
+                'tokens', function (Blueprint $table) {
+                    $table->foreign('account_id')->references('id')->on('accounts');
+                }
+            );
+        }
     }
 
     /**

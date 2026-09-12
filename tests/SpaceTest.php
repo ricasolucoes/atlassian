@@ -5,6 +5,14 @@ use PHPUnit\Framework\TestCase;
 
 class SpaceTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        if (!getenv('CONFLUENCE_HOST')) {
+            $this->markTestSkipped('CONFLUENCE_HOST environment variable is not configured.');
+        }
+    }
+
     public function testGetSpace()
     {
         $questionId = null;

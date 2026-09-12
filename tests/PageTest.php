@@ -6,6 +6,14 @@ use PHPUnit\Framework\TestCase;
 
 class PageTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        if (!getenv('CONFLUENCE_HOST')) {
+            $this->markTestSkipped('CONFLUENCE_HOST environment variable is not configured.');
+        }
+    }
+
     public function testGetPage()
     {
         global $argv, $argc;

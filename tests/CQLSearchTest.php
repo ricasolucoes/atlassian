@@ -5,6 +5,14 @@ use PHPUnit\Framework\TestCase;
 
 class CQLSearchTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        if (!getenv('CONFLUENCE_HOST')) {
+            $this->markTestSkipped('CONFLUENCE_HOST environment variable is not configured.');
+        }
+    }
+
     public function testSearch()
     {
         //$this->markTestSkipped();

@@ -1,55 +1,63 @@
-# Created by https://www.gitignore.io
+# Dependencies
+/vendor/
+/node_modules/
+/composer.phar
+/composer.lock
 
-### Composer ###
-composer.phar
-vendor/
+# Environment and secrets
+/.env
+/.env.*
+!/.env.example
+*.key
+*.pem
+id_rsa*
+/config.php
+/config.*.json
+!/config.example.json
+*.sqlite
+*.sqlite-*
+*.log
 
-# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# 
+# Build, test and analysis output
+/build/
+/dist/
+/coverage/
+/.phpunit.cache/
+.phpunit.result.cache
+/.php-cs-fixer.cache
+/.php_cs.cache
+/.phpstan.cache/
+/.psalm.cache/
+/build.json
+/clover.xml
+/coverage.xml
+/phpcs-report.xml
+/phpstan-report.xml
+/phpmd-report.xml
 
-### Editor (Vim, PhpStorm) ###
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
-*.un~
+# Laravel runtime artifacts
+/public/hot
+/public/storage
+/storage/*.key
+/storage/logs/
+
+# OS and editors
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
 Session.vim
 .netrwhist
-*~
-.idea/
 
-config.php
-config.jira.json
-jira-rest-client.log
-
-.env
-log
-confluence-rest-client.log
-
-
-# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# 
-
-### Editor (Vim, PhpStorm) ###
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
-*.un~
-Session.vim
-.netrwhist
-*~
-.idea/
-
-config.php
-config.jira.json
-jira-rest-client.log
-screen_capture.png
-bug-description.pdf
-
-.env
-
-# Ignore Vagrant Stuff
-.vagrant
-Vagrantfile
-# Ignore scotch.io box and the folders of them
-public/
-storage/
+# Release and temporary artifacts
+*.zip
+*.tar.gz
+/config.jira.json
+/jira-rest-client.log
+/confluence-rest-client.log
+/log/
+/screen_capture.png
+/bug-description.pdf

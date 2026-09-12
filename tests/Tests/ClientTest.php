@@ -34,7 +34,7 @@ class ClientTest extends TestCase
         $page = new ConfluencePage();
         $response = $client->createPage($page);
 
-        $this->assertInternalType('string',$response);
+        $this->assertIsString($response);
         $this->assertEquals('{"result":true}',$response);
     }
 
@@ -58,7 +58,7 @@ class ClientTest extends TestCase
         $client = new Client($curl);
         $response = $client->selectPageBy(['title'=>'test']);
 
-        $this->assertInternalType('string',$response);
+        $this->assertIsString($response);
         $this->assertEquals('{"result":true}',$response);
     }
 
@@ -85,17 +85,18 @@ class ClientTest extends TestCase
         $client = new Client($curl);
         $response = $client->request('POST',$url,['id'=>123]);
 
-        $this->assertInternalType('string',$response);
+        $this->assertIsString($response);
         $this->assertEquals('{"result":true}',$response);
     }
 
     /**
      * Test the exception when put invalid method
-     * @expectedException     \Exception
-     * @expectedExceptionMessage Invalid method
      */
     public function testRequestWithInvalidMethod()
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('Invalid method');
+
         $url = 'some/url';
         $username = 'username';
         $password = 'password';

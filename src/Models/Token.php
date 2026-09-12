@@ -5,10 +5,9 @@
 
 namespace Atlassian\Models;
 
-use Pedreiro\Models\Base;
-use Telefonica\Models\Digital\Account;
+use Illuminate\Database\Eloquent\Model;
 
-class Token extends Base
+class Token extends Model
 {
 
     
@@ -17,6 +16,7 @@ class Token extends Base
     public static $apresentationName = 'Tokens';
 
     protected $table = 'tokens';       
+    public $rules = [];       
 
     /**
      * The attributes that are mass assignable.

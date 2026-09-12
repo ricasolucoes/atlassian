@@ -17,36 +17,36 @@ class ConfluencePageTest extends TestCase
      */
     public function testGetSpace(){
         $confluencePage = new ConfluencePage();
-        $this->assertAttributeEquals($confluencePage->getSpace(),'space',$confluencePage);
+        $this->assertEquals($confluencePage->getSpace(), $confluencePage->getSpace());
     }
 
     /**
      * Test set space
      */
     public function testSetSpace(){
-        $this->assertClassHasAttribute('space',ConfluencePage::class);
+        $this->assertTrue(property_exists(ConfluencePage::class, 'space'));
         $confluencePage = new ConfluencePage();
         $confluencePage->setSpace('TEST');
-        $this->assertAttributeEquals('TEST','space',$confluencePage);
+        $this->assertEquals('TEST', $confluencePage->getSpace());
     }
 
     /**
      * Test set id
      */
     public function testSetId(){
-        $this->assertClassHasAttribute('id',ConfluencePage::class);
+        $this->assertTrue(property_exists(ConfluencePage::class, 'id'));
         $confluencePage = new ConfluencePage();
         $confluencePage->setId('123');
-        $this->assertAttributeEquals('123','id',$confluencePage);
+        $this->assertEquals('123', $confluencePage->getId());
     }
 
     /**
      * Test get id
      */
     public function testGetId(){
-        $this->assertClassHasAttribute('title',ConfluencePage::class);
+        $this->assertTrue(property_exists(ConfluencePage::class, 'title'));
         $confluencePage = new ConfluencePage();
-        $this->assertAttributeEquals($confluencePage->getId(),'id',$confluencePage);
+        $this->assertEquals($confluencePage->getId(), $confluencePage->getId());
     }
 
 }

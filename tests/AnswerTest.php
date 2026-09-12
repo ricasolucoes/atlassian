@@ -3,10 +3,14 @@
 use \Atlassian\Answer\AnswerService;
 use PHPUnit\Framework\TestCase;
 
-class QuestionTest extends TestCase
+class AnswerTest extends TestCase
 {
     public function testGetAnswers()
     {
+        if (!getenv('CONFLUENCE_HOST')) {
+            $this->markTestSkipped('Confluence integration tests require CONFLUENCE_HOST.');
+        }
+
         $answerId = null;
 
         //$this->markTestSkipped();
@@ -39,8 +43,12 @@ class QuestionTest extends TestCase
     /**
      * @depends testGetAnswers
      */
-    public function testGetAnswerDetail($answerId)
+    public function testGetAnswerDetail($answerId = null)
     {
+        if (!getenv('CONFLUENCE_HOST')) {
+            $this->markTestSkipped('Confluence integration tests require CONFLUENCE_HOST.');
+        }
+
         global $argv, $argc;
 
         // override command line parameter
@@ -65,8 +73,11 @@ class QuestionTest extends TestCase
     /**
      * @depends testGetAnswerDetail
      */
-    public function testGetAnswerRelativeQuestion($answerId)
+    public function testGetAnswerRelativeQuestion($answerId = null)
     {
+        if (!getenv('CONFLUENCE_HOST')) {
+            $this->markTestSkipped('Confluence integration tests require CONFLUENCE_HOST.');
+        }
         global $argv, $argc;
 
         // override command line parameter
